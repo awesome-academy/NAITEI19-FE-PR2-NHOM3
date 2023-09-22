@@ -9,6 +9,11 @@ import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
 // home pages
 const HomeBookStore = lazy(() => import("./pages/home/HomeBookStore"));
 
+// other pages
+const LoginRegister = lazy(() => import("./pages/other/LoginRegister"));
+const ProductTabLeft = lazy(() =>
+  import("./pages/shop-product/ProductTabLeft")
+);
 
 const App = (props) => {
 
@@ -47,6 +52,15 @@ const App = (props) => {
                 
                 {/* Homepages */}
 
+                {/* Other pages */}
+                <Route
+                  path={process.env.PUBLIC_URL + "/login-register"}
+                  component={LoginRegister}
+                />
+                <Route
+                  path={process.env.PUBLIC_URL + "/product-tab-left/:id"}
+                  component={ProductTabLeft}
+                />
               </Switch>
           </Suspense>
         </Router>

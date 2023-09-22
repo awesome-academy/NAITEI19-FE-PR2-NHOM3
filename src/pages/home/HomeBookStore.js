@@ -9,6 +9,7 @@ import NewProductSlider from "../../wrappers/product/NewProductSlider";
 import BlogFeatured from "../../wrappers/blog-featured/BlogFeatured";
 import BrandLogoSliderTwo from "../../wrappers/brand-logo/BrandLogoSliderTwo";
 
+
 const HomeBookStore = () => {
   return (
     <Fragment>
