@@ -1,14 +1,28 @@
-import React, { Suspense, lazy } from "react";
+import PropTypes from "prop-types";
+import React, { useEffect, Suspense, lazy } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { ToastProvider } from "react-toast-notifications";
+import { multilanguage, loadLanguages } from "redux-multilanguage";
+import { connect } from "react-redux";
 import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
 
 // home pages
 const HomeBookStore = lazy(() => import("./pages/home/HomeBookStore"));
 
 
-const App = () => {
+const App = (props) => {
 
+  useEffect(() => {
+    props.dispatch(
+      loadLanguages({
+        languages: {
+          en: require("./translations/english.json"),
+          fn: require("./translations/french.json"),
+          de: require("./translations/germany.json")
+        }
+      })
+    );
+  });
 
   return (
     <ToastProvider placement="bottom-left">
@@ -42,4 +56,8 @@ const App = () => {
 };
 
 
-export default App;
+App.propTypes = {
+  dispatch: PropTypes.func
+};
+
+export default connect()(multilanguage(App));

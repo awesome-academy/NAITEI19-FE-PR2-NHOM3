@@ -1,10 +1,24 @@
 @import "../../../node_modules/bootstrap/scss/bootstrap.scss";
-// @import "~swiper/css/swiper.css";
-// @import "~animate.css/animate.min.css";
-// @import "~lightgallery.js/dist/css/lightgallery.css";
-// @import "~react-modal-video/scss/modal-video.scss";
+@import "../../../node_modules/swiper/css/swiper.css";
+@import "../../../node_modules/animate.css/animate.min.css";
+@import "../../../node_modules/lightgallery.js/dist/css/lightgallery.css";
+@import "../../../node_modules/react-modal-video/scss/modal-video.scss";
 @import "../css/icons.min.css";
 
 @import "variables";
 @import "helper";
+@import "common";
+@import "preloader";
+@import "header";
+@import "slider";
+@import "section-title";
+@import "product";
+@import "blog";
+@import "footer";
+@import "banner";
+@import "image-slider";
+@import "brand-logo";
+@import "timers";
+@import "breadcrumb";
+@import "video-popup";
 
