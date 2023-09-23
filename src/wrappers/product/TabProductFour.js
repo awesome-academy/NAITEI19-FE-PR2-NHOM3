@@ -6,6 +6,7 @@ import Nav from "react-bootstrap/Nav";
 import SectionTitleThree from "../../components/section-title/SectionTitleThree";
 import ProductGridTwo from "./ProductGridTwo";
 
+
 const TabProductFour = ({ spaceBottomClass, category, productTabClass }) => {
   return (
     <div className={`product-area ${spaceBottomClass ? spaceBottomClass : ""}`}>
@@ -50,12 +51,12 @@ const TabProductFour = ({ spaceBottomClass, category, productTabClass }) => {
             </Tab.Pane>
             <Tab.Pane eventKey="bestSeller">
               <div className="row">
-                <ProductGridTwo
-                  category={category}
-                  type="bestSeller"
-                  limit={8}
-                  spaceBottomClass="mb-25"
-                />
+                  <ProductGridTwo
+                    category={category}
+                    type="bestSeller"
+                    limit={4}
+                    spaceBottomClass="mb-25"
+                  />
               </div>
             </Tab.Pane>
             <Tab.Pane eventKey="saleItems">
@@ -85,7 +86,7 @@ const TabProductFour = ({ spaceBottomClass, category, productTabClass }) => {
 
 TabProductFour.propTypes = {
   category: PropTypes.string,
-  spaceBottomClass: PropTypes.string
+  spaceBottomClass: PropTypes.string,
 };
 
 export default TabProductFour;
