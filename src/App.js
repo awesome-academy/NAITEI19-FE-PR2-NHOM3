@@ -10,20 +10,21 @@ import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
 const HomeBookStore = lazy(() => import("./pages/home/HomeBookStore"));
 const LoginRegister = lazy(() => import("./pages/other/LoginRegister"));
 
+// shop pages
+const ShopGridStandard = lazy(() => import("./pages/shop/ShopGridStandard"));
 const ProductTabLeft = lazy(() =>
   import("./pages/shop-product/ProductTabLeft")
 );
 
 const App = (props) => {
-
   useEffect(() => {
     props.dispatch(
       loadLanguages({
         languages: {
           en: require("./translations/english.json"),
           fn: require("./translations/french.json"),
-          de: require("./translations/germany.json")
-        }
+          de: require("./translations/germany.json"),
+        },
       })
     );
   });
@@ -33,24 +34,29 @@ const App = (props) => {
       <BreadcrumbsProvider>
         <Router>
           <Suspense
-              fallback={
-                <div className="flone-preloader-wrapper">
-                  <div className="flone-preloader">
-                    <span></span>
-                    <span></span>
-                  </div>
+            fallback={
+              <div className="flone-preloader-wrapper">
+                <div className="flone-preloader">
+                  <span></span>
+                  <span></span>
                 </div>
-              }
-            >
-              <Switch>
-                <Route
-                  exact
-                  path={process.env.PUBLIC_URL + "/"}
-                  component={HomeBookStore}
-                />
-                
-                {/* Homepages */}
+              </div>
+            }
+          >
+            <Switch>
+              <Route
+                exact
+                path={process.env.PUBLIC_URL + "/"}
+                component={HomeBookStore}
+              />
 
+              {/* Homepages */}
+
+              {/* Shop pages */}
+              <Route
+                path={process.env.PUBLIC_URL + "/shop-grid-standard"}
+                component={ShopGridStandard}
+              />
                 <Route
                   path={process.env.PUBLIC_URL + "/product-tab-left/:id"}
                   component={ProductTabLeft}
@@ -61,7 +67,7 @@ const App = (props) => {
                   path={process.env.PUBLIC_URL + "/login-register"}
                   component={LoginRegister}
                 />
-                
+
               </Switch>
           </Suspense>
         </Router>
@@ -70,9 +76,8 @@ const App = (props) => {
   );
 };
 
-
 App.propTypes = {
-  dispatch: PropTypes.func
+  dispatch: PropTypes.func,
 };
 
 export default connect()(multilanguage(App));

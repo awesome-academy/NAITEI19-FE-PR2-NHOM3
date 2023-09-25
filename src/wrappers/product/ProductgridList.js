@@ -1,10 +1,9 @@
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import { addToCart } from "../../redux/actions/cartActions";
-import { addToWishlist } from "../../redux/actions/wishlistActions";
-import { addToCompare } from "../../redux/actions/compareActions";
 import ProductGridListSingle from "../../components/product/ProductGridListSingle";
+
+import { productsData } from "../../data/fake";
 
 const ProductGrid = ({
   products,
@@ -20,7 +19,7 @@ const ProductGrid = ({
 }) => {
   return (
     <Fragment>
-      {products.map(product => {
+      {productsData.map(product => {
         return (
           <ProductGridListSingle
             sliderClassName={sliderClassName}
@@ -31,15 +30,15 @@ const ProductGrid = ({
             addToWishlist={addToWishlist}
             addToCompare={addToCompare}
             cartItem={
-              cartItems.filter(cartItem => cartItem.id === product.id)[0]
+              productsData.filter(cartItem => cartItem.id === product.id)[0]
             }
             wishlistItem={
-              wishlistItems.filter(
+              productsData.filter(
                 wishlistItem => wishlistItem.id === product.id
               )[0]
             }
             compareItem={
-              compareItems.filter(
+              productsData.filter(
                 compareItem => compareItem.id === product.id
               )[0]
             }
@@ -75,29 +74,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    addToCart: (
-      item,
-      addToast,
-      quantityCount,
-      selectedProductColor,
-      selectedProductSize
-    ) => {
-      dispatch(
-        addToCart(
-          item,
-          addToast,
-          quantityCount,
-          selectedProductColor,
-          selectedProductSize
-        )
-      );
-    },
-    addToWishlist: (item, addToast) => {
-      dispatch(addToWishlist(item, addToast));
-    },
-    addToCompare: (item, addToast) => {
-      dispatch(addToCompare(item, addToast));
-    }
+    // TODO
   };
 };
 

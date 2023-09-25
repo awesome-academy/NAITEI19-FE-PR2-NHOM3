@@ -22,7 +22,7 @@ const LoginForm = ({ submitHandler }) => {
     // get fields of the form
     const email = e.target.elements.email.value;
     const password = e.target.elements.password.value;
-    
+
     try {
       // search for matching user from json-server
       const resUser = (await serverAPI.get("/users/", {
@@ -178,7 +178,6 @@ const LoginRegister = ({ authData, location, fetchUser }) => {
                         <div className="login-form-container">
                           <div className="login-register-form">
                             <LoginForm submitHandler={(user) => {
-                              // console.log(user);
                               fetchUser(user);
                               history.replace('/');
                             }} />
@@ -189,7 +188,6 @@ const LoginRegister = ({ authData, location, fetchUser }) => {
                         <div className="login-form-container">
                           <div className="login-register-form">
                             <RegisterForm submitHandler={(user) => {
-                              // console.log(user);
                               fetchUser(user);
                               history.replace('/');
                             }} />
