@@ -21,4 +21,11 @@ const ShopTopbar = ({
   );
 };
 
+ShopTopbar.propTypes = {
+  getFilterSortParams: PropTypes.func,
+  getLayout: PropTypes.func,
+  productCount: PropTypes.number,
+  sortedProductCount: PropTypes.number
+};
+
 export default ShopTopbar;
