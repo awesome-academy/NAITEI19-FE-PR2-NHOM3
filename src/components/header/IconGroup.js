@@ -3,10 +3,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import MenuCart from "./sub-components/MenuCart";
+import { removeUser } from "../../redux/actions/authAction";
+import { Button } from "react-bootstrap";
 
 const IconGroup = ({
+  authData,
   currency,
-  iconWhiteClass
+  iconWhiteClass,
+  removeUser,
 }) => {
   const handleClick = e => {
     e.currentTarget.nextSibling.classList.toggle("active");
@@ -41,23 +45,51 @@ const IconGroup = ({
           className="account-setting-active"
           onClick={e => handleClick(e)}
         >
-          <i className="pe-7s-user-female" />
+          {authData.currentUser && authData.currentUser.avatar
+            ? (
+              <img
+                className="rounded-circle"
+                src={authData.currentUser.avatar}
+                alt="avatar"
+                style={{ width: "30px", height: "30px" }}
+              />
+            ) : (
+              <i className="pe-7s-user-female" />
+            )}
         </button>
         <div className="account-dropdown">
           <ul>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/login-register"}>Login</Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/login-register"}>
-                Register
-              </Link>
-            </li>
-            <li>
-              <Link to={process.env.PUBLIC_URL + "/my-account"}>
-                my account
-              </Link>
-            </li>
+            {!(authData.currentUser) && (
+              <>
+                <li>
+                  <Link to={process.env.PUBLIC_URL + "/login-register"}>Login</Link>
+                </li>
+                <li>
+                  <Link to={process.env.PUBLIC_URL + "/login-register"}>
+                    Register
+                  </Link>
+                </li>
+              </>
+            )}
+            {authData.currentUser && (
+              <>
+                <li>
+                  <Link to={process.env.PUBLIC_URL + "/my-account"}>
+                    My account
+                  </Link>
+                </li>
+                <hr></hr>
+                <li>
+                  <Button
+                    variant="danger"
+                    style={{ width: "100%", fontSize: "1rem", color: "white" }}
+                    onClick={() => removeUser()}
+                  >
+                    Logout
+                  </Button>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </div>
@@ -106,16 +138,24 @@ const IconGroup = ({
 };
 
 IconGroup.propTypes = {
+  authData: PropTypes.object,
   currency: PropTypes.object,
   iconWhiteClass: PropTypes.string,
 };
 
 const mapStateToProps = state => {
   return {
+    authData: state.authData,
     currency: state.currencyData,
   };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    removeUser: () => {
+      dispatch(removeUser());
+    }
+  };
+};
 
-
-export default connect(mapStateToProps)(IconGroup);
+export default connect(mapStateToProps, mapDispatchToProps)(IconGroup);
