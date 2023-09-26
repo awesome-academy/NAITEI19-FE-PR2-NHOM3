@@ -8,9 +8,8 @@ import ProductModal from "./ProductModal";
 const ProductGridSingleTwo = ({
   product,
   currency,
+  addToCart,
   cartItem,
-  wishlistItem,
-  compareItem,
   sliderClassName,
   spaceBottomClass,
   colorClass,
@@ -87,7 +86,7 @@ const ProductGridSingleTwo = ({
                 </Link>
               ) : product.stock && product.stock > 0 ? (
                 <button
-
+                  onClick={() => addToCart(product, addToast)}
                   className={
                     cartItem !== undefined && cartItem.quantity > 0
                       ? "active"
@@ -112,14 +111,9 @@ const ProductGridSingleTwo = ({
               </button>
 
               <button
-                className={compareItem !== undefined ? "active" : ""}
-                disabled={compareItem !== undefined}
                 title={
-                  compareItem !== undefined
-                    ? "Added to compare"
-                    : "Add to compare"
+                   "Add to compare"
                 }
-
               >
                 <i className="fa fa-retweet"></i>
               </button>
@@ -132,7 +126,7 @@ const ProductGridSingleTwo = ({
               }`}
             >
               <h3>
-                <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
+                <Link to={process.env.PUBLIC_URL + "/product-tab-left/" + product.id}>
                   {product.name}
                 </Link>
               </h3>
@@ -153,14 +147,9 @@ const ProductGridSingleTwo = ({
             </div>
             <div className="pro-wishlist-2">
               <button
-                className={wishlistItem !== undefined ? "active" : ""}
-                disabled={wishlistItem !== undefined}
                 title={
-                  wishlistItem !== undefined
-                    ? "Added to wishlist"
-                    : "Add to wishlist"
+                   "Add to wishlist"
                 }
-    
               >
                 <i className="fa fa-heart-o" />
               </button>
@@ -178,8 +167,7 @@ const ProductGridSingleTwo = ({
         finalproductprice={finalProductPrice}
         finaldiscountedprice={finalDiscountedPrice}
         cartitem={cartItem}
-        wishlistitem={wishlistItem}
-        compareitem={compareItem}
+        addtocart={addToCart}
         addtoast={addToast}
       />
     </Fragment>
@@ -187,15 +175,14 @@ const ProductGridSingleTwo = ({
 };
 
 ProductGridSingleTwo.propTypes = {
+  addToCart: PropTypes.func,
   cartItem: PropTypes.object,
-  compareItem: PropTypes.object,
   currency: PropTypes.object,
   product: PropTypes.object,
   sliderClassName: PropTypes.string,
   spaceBottomClass: PropTypes.string,
   colorClass: PropTypes.string,
   titlePriceClass: PropTypes.string,
-  wishlistItem: PropTypes.object
 };
 
 export default ProductGridSingleTwo;
