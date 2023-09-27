@@ -1,0 +1,26 @@
+{
+    "email": "fake@mail.com",
+    "password": "11",
+    "firstname": "First",
+    "lastname": "Last",
+    "phone": "42352345",
+    "fax": "",
+    "addresses": [
+        {
+            "id": 1,
+            "name": "John Doe",
+            "street": "Dai Co Viet",
+            "ward": "Bach Khoa",
+            "district": "Hai Ba Trung",
+            "city": "Ha Noi"
+        },
+        {
+            "id": 2,
+            "name": "John Doe 2",
+            "street": "Tran Dai Nghia",
+            "ward": "Bach Khoa",
+            "district": "Hai Ba Trung",
+            "city": "Ha Noi"
+        }
+    ]
+}
