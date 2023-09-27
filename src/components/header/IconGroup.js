@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import MenuCart from "./sub-components/MenuCart";
+import { deleteFromCart } from "../../redux/actions/cartActions";
 import { removeUser } from "../../redux/actions/authAction";
 import { Button } from "react-bootstrap";
 
@@ -11,6 +12,8 @@ const IconGroup = ({
   currency,
   iconWhiteClass,
   removeUser,
+  cartData,
+  deleteFromCart
 }) => {
   const handleClick = e => {
     e.currentTarget.nextSibling.classList.toggle("active");
@@ -111,17 +114,21 @@ const IconGroup = ({
         <button className="icon-cart" onClick={e => handleClick(e)}>
           <i className="pe-7s-shopbag" />
           <span className="count-style">
+          {cartData && cartData.length ? cartData.length : 0}
           </span>
         </button>
         {/* menu cart */}
         <MenuCart
+          cartData={cartData}
           currency={currency}
+          deleteFromCart={deleteFromCart}
         />
       </div>
       <div className="same-style cart-wrap d-block d-lg-none">
         <Link className="icon-cart" to={process.env.PUBLIC_URL + "/cart"}>
           <i className="pe-7s-shopbag" />
           <span className="count-style">
+          {cartData && cartData.length ? cartData.length : 0}
           </span>
         </Link>
       </div>
@@ -141,12 +148,15 @@ IconGroup.propTypes = {
   authData: PropTypes.object,
   currency: PropTypes.object,
   iconWhiteClass: PropTypes.string,
+  cartData: PropTypes.array,
+  deleteFromCart: PropTypes.func
 };
 
 const mapStateToProps = state => {
   return {
     authData: state.authData,
     currency: state.currencyData,
+    cartData: state.cartData
   };
 };
 
@@ -154,6 +164,9 @@ const mapDispatchToProps = dispatch => {
   return {
     removeUser: () => {
       dispatch(removeUser());
+    },
+    deleteFromCart: (item, addToast) => {
+      dispatch(deleteFromCart(item, addToast));
     }
   };
 };

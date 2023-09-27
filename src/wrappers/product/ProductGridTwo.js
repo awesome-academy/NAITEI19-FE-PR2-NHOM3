@@ -3,10 +3,13 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { getProducts } from "../../helpers/product";
 import ProductGridSingleTwo from "../../components/product/ProductGridSingleTwo";
+import { addToCart } from "../../redux/actions/cartActions";
 
 
 const ProductGridTwo = ({
   products,
+  addToCart,
+  cartItems,
   currency,
   sliderClassName,
   spaceBottomClass,
@@ -23,6 +26,10 @@ const ProductGridTwo = ({
             colorClass={colorClass}
             product={product}
             currency={currency}
+            addToCart={addToCart}
+            cartItem={
+              cartItems.filter((cartItem) => cartItem.id === product.id)[0]
+            }
             key={product.id}
             titlePriceClass={titlePriceClass}
           />
@@ -33,12 +40,14 @@ const ProductGridTwo = ({
 };
 
 ProductGridTwo.propTypes = {
+  addToCart: PropTypes.func,
+  cartItems: PropTypes.array,
   currency: PropTypes.object,
   products: PropTypes.array,
   sliderClassName: PropTypes.string,
   spaceBottomClass: PropTypes.string,
   colorClass: PropTypes.string,
-  titlePriceClass: PropTypes.string,
+  titlePriceClass: PropTypes.string
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -50,9 +59,30 @@ const mapStateToProps = (state, ownProps) => {
       ownProps.limit
     ),
     currency: state.currencyData,
+    cartItems: state.cartData
   };
 };
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addToCart: (
+      item,
+      addToast,
+      quantityCount,
+      selectedProductColor,
+      selectedProductSize
+    ) => {
+      dispatch(
+        addToCart(
+          item,
+          addToast,
+          quantityCount,
+          selectedProductColor,
+          selectedProductSize
+        )
+      );
+    }
+  };
+};
 
-
-export default connect(mapStateToProps)(ProductGridTwo);
+export default connect(mapStateToProps, mapDispatchToProps)(ProductGridTwo);
