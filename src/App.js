@@ -16,6 +16,9 @@ const ProductTabLeft = lazy(() =>
   import("./pages/shop-product/ProductTabLeft")
 );
 
+const About = lazy(() => import("./pages/other/About"));
+const Contact = lazy(() => import("./pages/other/Contact"));
+
 const App = (props) => {
   useEffect(() => {
     props.dispatch(
@@ -68,6 +71,14 @@ const App = (props) => {
                   component={LoginRegister}
                 />
 
+                <Route
+                  path={process.env.PUBLIC_URL + "/about"}
+                  component={About}
+                />
+                <Route
+                  path={process.env.PUBLIC_URL + "/contact"}
+                  component={Contact}
+                />
               </Switch>
           </Suspense>
         </Router>
