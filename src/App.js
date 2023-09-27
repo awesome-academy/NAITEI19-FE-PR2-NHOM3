@@ -15,7 +15,8 @@ const ShopGridStandard = lazy(() => import("./pages/shop/ShopGridStandard"));
 const ProductTabLeft = lazy(() =>
   import("./pages/shop-product/ProductTabLeft")
 );
-
+//other
+const MyAccount = lazy(() => import("./pages/other/MyAccount"));
 const About = lazy(() => import("./pages/other/About"));
 const Contact = lazy(() => import("./pages/other/Contact"));
 
@@ -60,26 +61,30 @@ const App = (props) => {
                 path={process.env.PUBLIC_URL + "/shop-grid-standard"}
                 component={ShopGridStandard}
               />
-                <Route
-                  path={process.env.PUBLIC_URL + "/product-tab-left/:id"}
-                  component={ProductTabLeft}
-                />
+              <Route
+                path={process.env.PUBLIC_URL + "/product-tab-left/:id"}
+                component={ProductTabLeft}
+              />
 
-                {/* Other pages */}
-                <Route
-                  path={process.env.PUBLIC_URL + "/login-register"}
-                  component={LoginRegister}
-                />
+              {/* Other pages */}
+              <Route
+                path={process.env.PUBLIC_URL + "/login-register"}
+                component={LoginRegister}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/my-account"}
+                component={MyAccount}
+              />
 
-                <Route
-                  path={process.env.PUBLIC_URL + "/about"}
-                  component={About}
-                />
-                <Route
-                  path={process.env.PUBLIC_URL + "/contact"}
-                  component={Contact}
-                />
-              </Switch>
+              <Route
+                path={process.env.PUBLIC_URL + "/about"}
+                component={About}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/contact"}
+                component={Contact}
+              />
+            </Switch>
           </Suspense>
         </Router>
       </BreadcrumbsProvider>

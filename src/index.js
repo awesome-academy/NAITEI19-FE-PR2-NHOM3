@@ -7,11 +7,14 @@ import thunk from "redux-thunk";
 import { save, load } from "redux-localstorage-simple";
 import { Provider } from "react-redux";
 import { fetchProducts } from "./redux/actions/productActions";
+import { fetchUser } from "./redux/actions/authAction";
 import rootReducer from "./redux/reducers/rootReducer";
 import products from "./data/products.json";
+import user from "./data/user.json"
 import App from "./App";
 import "./assets/scss/style.scss";
 import * as serviceWorker from "./serviceWorker";
+
 
 import { composeWithDevTools } from "redux-devtools-extension";
 
@@ -23,6 +26,7 @@ const store = createStore(
 
 // fetch products from json file
 store.dispatch(fetchProducts(products));
+store.dispatch(fetchUser(user));  
 
 ReactDOM.render(
     <Provider store={store}>
