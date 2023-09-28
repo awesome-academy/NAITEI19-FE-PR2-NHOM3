@@ -97,7 +97,7 @@ const MyAccount = ({ location, user }) => {
         <title>Flone | My Account</title>
         <meta
           name="description"
-          content="Compare page of flone react minimalist eCommerce template."
+          content="My Account Page"
         />
       </MetaTags>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
