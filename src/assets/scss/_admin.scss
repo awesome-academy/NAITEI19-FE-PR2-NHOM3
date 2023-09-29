@@ -1,0 +1,41 @@
+.admin {
+  .sidebar {
+    flex: 0 0 16.67%;
+    max-width: 16.67%;
+    background-image: linear-gradient(#f2f2f2, #bebebe);
+    @media #{$lg-layout} {
+      flex: 0 0 25%;
+      max-width: 25%;  
+    }
+
+    .sidebar-item {
+      background-color: transparent;
+      i {
+        width: 1rem;
+      }
+      &:hover {
+        color: #a749ff;
+      }
+    }
+  }
+  .main {
+    flex: 0 0 83.33%;
+    max-width: 83.33%;
+    @media #{$lg-layout} {
+      flex: 0 0 75%;
+      max-width: 75%;  
+    }
+
+    .navbar {
+      .navbar-brand {
+        button {
+          margin-right: 1rem;
+        }
+      }
+    }
+
+    .body {
+      padding: 1rem;
+    }
+  }
+}

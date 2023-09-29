@@ -1,6 +1,7 @@
 {
     "email": "fake@mail.com",
     "password": "11",
+    "username": "abc",
     "firstname": "First",
     "lastname": "Last",
     "phone": "42352345",
@@ -22,5 +23,6 @@
             "district": "Hai Ba Trung",
             "city": "Ha Noi"
         }
-    ]
+    ],
+    "role": "ADMIN"
 }
