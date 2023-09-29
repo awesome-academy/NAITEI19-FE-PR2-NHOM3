@@ -19,6 +19,7 @@ const ProductTabLeft = lazy(() =>
 const MyAccount = lazy(() => import("./pages/other/MyAccount"));
 const About = lazy(() => import("./pages/other/About"));
 const Contact = lazy(() => import("./pages/other/Contact"));
+const Cart = lazy(() => import("./pages/other/Cart"));
 
 const App = (props) => {
   useEffect(() => {
@@ -83,6 +84,10 @@ const App = (props) => {
               <Route
                 path={process.env.PUBLIC_URL + "/contact"}
                 component={Contact}
+              />
+              <Route
+                path={process.env.PUBLIC_URL + "/cart"}
+                component={Cart}
               />
             </Switch>
           </Suspense>
