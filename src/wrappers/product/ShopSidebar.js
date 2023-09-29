@@ -1,22 +1,38 @@
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
-  getIndividualCategories,
   getIndividualTags,
   getIndividualColors,
-  getProductsIndividualSizes
 } from "../../helpers/product";
 import ShopSearch from "../../components/product/ShopSearch";
 import ShopCategories from "../../components/product/ShopCategories";
 import ShopColor from "../../components/product/ShopColor";
-import ShopSize from "../../components/product/ShopSize";
 import ShopTag from "../../components/product/ShopTag";
+import ShopPrice from "../../components/product/ShopPrice";
 
 const ShopSidebar = ({ products, getSortParams, sideSpaceClass }) => {
-  const uniqueCategories = getIndividualCategories(products);
+  const [uniqueCategories, setUniqueCategories] = useState([]);
+  const [uniquePrices, setUniquePrices] = useState([]);
   const uniqueColors = getIndividualColors(products);
-  const uniqueSizes = getProductsIndividualSizes(products);
   const uniqueTags = getIndividualTags(products);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const responseCategory = await fetch(
+        process.env.REACT_APP_BACKEND_URL + "/categories/"
+      );
+      const responsePrice = await fetch(
+        process.env.REACT_APP_BACKEND_URL + "/prices/"
+      );
+      const categories = await responseCategory.json();
+      setUniqueCategories(categories);
+
+      const prices = await responsePrice.json();
+      setUniquePrices(prices);
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <div className={`sidebar-style ${sideSpaceClass ? sideSpaceClass : ""}`}>
@@ -32,11 +48,11 @@ const ShopSidebar = ({ products, getSortParams, sideSpaceClass }) => {
       {/* filter by color */}
       <ShopColor colors={uniqueColors} getSortParams={getSortParams} />
 
-      {/* filter by size */}
-      <ShopSize sizes={uniqueSizes} getSortParams={getSortParams} />
-
       {/* filter by tag */}
       <ShopTag tags={uniqueTags} getSortParams={getSortParams} />
+
+      {/* filter by price */}
+      <ShopPrice prices={uniquePrices} getSortParams={getSortParams} />
     </div>
   );
 };
@@ -44,7 +60,7 @@ const ShopSidebar = ({ products, getSortParams, sideSpaceClass }) => {
 ShopSidebar.propTypes = {
   getSortParams: PropTypes.func,
   products: PropTypes.array,
-  sideSpaceClass: PropTypes.string
+  sideSpaceClass: PropTypes.string,
 };
 
 export default ShopSidebar;
