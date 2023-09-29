@@ -6,33 +6,29 @@ import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 import { save, load } from "redux-localstorage-simple";
 import { Provider } from "react-redux";
-import { fetchProducts } from "./redux/actions/productActions";
 import { fetchUser } from "./redux/actions/authAction";
 import rootReducer from "./redux/reducers/rootReducer";
-import products from "./data/products.json";
-import user from "./data/user.json"
+import user from "./data/user.json";
 import App from "./App";
 import "./assets/scss/style.scss";
 import * as serviceWorker from "./serviceWorker";
 
-
 import { composeWithDevTools } from "redux-devtools-extension";
 
 const store = createStore(
-    rootReducer,
-    load(),
-    composeWithDevTools(applyMiddleware(thunk, save()))
+  rootReducer,
+  load(),
+  composeWithDevTools(applyMiddleware(thunk, save()))
 );
 
 // fetch products from json file
-store.dispatch(fetchProducts(products));
-store.dispatch(fetchUser(user));  
+store.dispatch(fetchUser(user));
 
 ReactDOM.render(
-    <Provider store={store}>
-      <App />
-    </Provider>,
-    document.getElementById("root")
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById("root")
 );
 
 serviceWorker.unregister();

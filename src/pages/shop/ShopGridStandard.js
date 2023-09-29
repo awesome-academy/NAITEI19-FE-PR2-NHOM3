@@ -11,6 +11,7 @@ import ShopSidebar from '../../wrappers/product/ShopSidebar';
 import ShopTopbar from '../../wrappers/product/ShopTopbar';
 import ShopProducts from '../../wrappers/product/ShopProducts';
 
+
 const ShopGridStandard = ({location, products}) => {
     const [layout, setLayout] = useState('grid three-column');
     const [sortType, setSortType] = useState('');
@@ -21,6 +22,7 @@ const ShopGridStandard = ({location, products}) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [currentData, setCurrentData] = useState([]);
     const [sortedProducts, setSortedProducts] = useState([]);
+
 
     const pageLimit = 15;
     const {pathname} = location;

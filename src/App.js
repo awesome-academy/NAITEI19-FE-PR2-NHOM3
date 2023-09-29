@@ -6,6 +6,8 @@ import { multilanguage, loadLanguages } from "redux-multilanguage";
 import { connect } from "react-redux";
 import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
 
+import { fetchProducts } from "./redux/actions/productActions";
+
 // home pages
 const HomeBookStore = lazy(() => import("./pages/home/HomeBookStore"));
 const LoginRegister = lazy(() => import("./pages/other/LoginRegister"));
@@ -32,6 +34,16 @@ const App = (props) => {
         },
       })
     );
+
+    const fetchData = async () => {
+      const response = await fetch(
+        process.env.REACT_APP_BACKEND_URL + "/products/"
+      );
+      const products = await response.json();
+      props.dispatch(fetchProducts(products));
+    };
+
+    fetchData();
   });
 
   return (
