@@ -30,7 +30,7 @@ const HomeBookStore = () => {
           responsiveClass="res-mrg-md-mt"
         />
         {/* tab product */}
-        <TabProductFour category="book" productTabClass="product-tab-pink2" />
+        <TabProductFour  productTabClass="product-tab-pink2" />
         {/* call to action */}
         <CtaOne
           spaceTopClass="pt-100"
