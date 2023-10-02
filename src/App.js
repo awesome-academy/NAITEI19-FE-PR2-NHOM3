@@ -23,6 +23,7 @@ const About = lazy(() => import("./pages/other/About"));
 const Contact = lazy(() => import("./pages/other/Contact"));
 const Cart = lazy(() => import("./pages/other/Cart"));
 const ManageUser = lazy(() => import("./pages/admin/ManageUser"));
+const Checkout = lazy(() => import("./pages/other/Checkout"));
 
 const App = (props) => {
   useEffect(() => {
@@ -106,7 +107,10 @@ const App = (props) => {
                 path={process.env.PUBLIC_URL + "/admin/users"}
                 component={ManageUser}
               />
-
+              <Route
+                  path={process.env.PUBLIC_URL + "/checkout"}
+                  component={Checkout}
+              />
             </Switch>
           </Suspense>
         </Router>
