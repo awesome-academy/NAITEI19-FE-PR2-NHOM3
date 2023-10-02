@@ -335,6 +335,23 @@
           background-color: #333;
         }
       }
+      .form-submit button {
+        font-weight: 500;
+
+        width: auto;
+        height: auto;
+        padding: 12px 50px;
+
+        text-transform: uppercase;
+
+        color: #fff;
+        border: 1px solid $theme-color;
+        background-color: $theme-color;
+        &:hover {
+          border: 1px solid #333;
+          background-color: #333;
+        }
+      }
     }
   }
 }
