@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "productId": 1,
+        "name": "Fake user",
+        "image": "/assets/img/testimonial/1.jpg",
+        "rating": 3,
+        "comment": "Vestibulum ante ipsum primis aucibus orci luctustrices posuere cubilia Curae Suspendisse viverra ed viverra. Mauris ullarper euismod vehicula. Phasellus quam nisi, congue id nulla.",
+        "reply": [
+            {
+                "name": "Fake user 2",
+                "image": "/assets/img/testimonial/2.jpg",
+                "comment": "Vestibulum ante ipsum primis aucibus orci luctustrices posuere cubilia Curae Suspendisse viverra ed viverra. Mauris ullarper euismod vehicula."
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "productId": 1,
+        "name": "Fake user 2",
+        "image": "/assets/img/testimonial/2.jpg",
+        "rating": 4,
+        "comment": "Vestibulum ante ipsum primis viverra. Mauris ullarper euismod vehicula. Phasellus quam nisi, congue id nulla.",
+        "reply": []
+    }
+]

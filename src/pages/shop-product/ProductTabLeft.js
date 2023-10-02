@@ -43,6 +43,7 @@ const ProductTabLeft = ({ location, product }) => {
         <ProductDescriptionTab
           spaceBottomClass="pb-90"
           productFullDesc={product.fullDescription}
+          id={product.id}
         />
 
         {/* related product slider */}
