@@ -22,6 +22,7 @@ const MyAccount = lazy(() => import("./pages/other/MyAccount"));
 const About = lazy(() => import("./pages/other/About"));
 const Contact = lazy(() => import("./pages/other/Contact"));
 const Cart = lazy(() => import("./pages/other/Cart"));
+const ManageUser = lazy(() => import("./pages/admin/ManageUser"));
 
 const App = (props) => {
   useEffect(() => {
@@ -101,6 +102,11 @@ const App = (props) => {
                 path={process.env.PUBLIC_URL + "/cart"}
                 component={Cart}
               />
+              <Route
+                path={process.env.PUBLIC_URL + "/admin/users"}
+                component={ManageUser}
+              />
+
             </Switch>
           </Suspense>
         </Router>
