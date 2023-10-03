@@ -11,7 +11,16 @@ import { useDispatch } from "react-redux";
 import { updateUser } from "../../redux/actions/authAction";
 import { useToasts } from "react-toast-notifications";
 import Addresses from "../../components/my-account/Addresses";
-
+import serverAPI from "../../serverAPI";
+import {
+  Table,
+  TableRow,
+  TableHead,
+  TableBody,
+  TableCell,
+  Chip,
+} from "@material-ui/core";
+import { format } from "date-fns";
 
 const MyAccount = ({ location, user }) => {
   const dispatch = useDispatch();
@@ -32,6 +41,23 @@ const MyAccount = ({ location, user }) => {
     district: '',
     city: ''
   })
+  const [userOrders, setUserOrders] = useState([]);
+
+  useEffect(() => {
+    // Gọi API để lấy danh sách đơn hàng của người dùng hiện tại
+    async function fetchUserOrders() {
+      try {
+        const response = await serverAPI.get(`/orders?userId=${user.id}`);
+        setUserOrders(response.data);
+        console.log(response.data)
+      } catch (error) {
+        console.error("Lỗi khi lấy danh sách đơn hàng:", error);
+        addToast("Lỗi khi lấy danh sách đơn hàng", { appearance: "error", autoDismiss: true });
+      }
+    }
+
+    fetchUserOrders();
+  }, [user.id, addToast]);
 
   function onChangeInfo(e) {
     e.preventDefault();
@@ -272,6 +298,90 @@ const MyAccount = ({ location, user }) => {
                                 </div>
                               </form>
                             )}
+                          </div>
+                        </Card.Body>
+                      </Accordion.Collapse>
+                    </Card>
+                    <Card className="single-my-account mb-20">
+                      <Card.Header className="panel-heading">
+                        <Accordion.Toggle variant="link" eventKey="3">
+                          <h3 className="panel-title">
+                            <span>4 .</span> Đơn hàng của bạn{" "}
+                          </h3>
+                        </Accordion.Toggle>
+                      </Card.Header>
+                      <Accordion.Collapse eventKey="3">
+                        <Card.Body>
+                          <div className="myaccount-info-wrapper">
+                            <div className="account-info-wrapper">
+                              <h4>Danh sách đơn hàng</h4>
+                            </div>
+                            <Table>
+                            <TableHead>
+                              <TableRow>
+                                <TableCell>Trạng thái</TableCell>
+                                <TableCell>Họ</TableCell>
+                                <TableCell>Tên</TableCell>
+                                <TableCell>SĐT</TableCell>
+                                <TableCell>Ngày đặt hàng</TableCell>
+                                <TableCell>Ngày giao hàng </TableCell>
+                                <TableCell>Tổng tiền</TableCell>
+                                <TableCell>Chi tiết</TableCell>
+                              </TableRow>
+                            </TableHead>
+                            <TableBody>
+                              {userOrders && userOrders.length > 0 ? (
+                                userOrders.map((order) => (
+                                  <TableRow key={order.id}>
+                                    {/* <TableCell>{order.id}</TableCell> */}
+                                    <TableCell>
+                                      <Chip
+                                        label={order.status}
+                                        style={{
+                                          backgroundColor: order.statusColor,
+                                          color: "#fff",
+                                        }}
+                                      />
+                                    </TableCell>
+                                    <TableCell>
+                                    {order.FirstName}
+                                    </TableCell>
+                                    <TableCell>
+                                    {order.LastName}
+                                    </TableCell>
+                                    <TableCell>
+                                    {order.phone}
+                                    </TableCell>
+                                    
+                                    <TableCell>
+                                      {order.orderDate}
+                                      {/* {format(
+                                        new Date(order.orderDate),
+                                        "dd/MM/yyyy"
+                                      )} */}
+                                    </TableCell>
+                                    <TableCell>
+                                      {order.deliveryDate}
+                                      {/* {" "}
+                                      {console.log("Value of order.shippingDate:", order.deliveryDate)}
+                                      {order.deliveryDate ? format(new Date(order.deliveryDate), "dd/MM/yyyy") : 'chua co ngay giao hang'} */}
+
+                                    </TableCell>
+                                    <TableCell>
+                                      {order.totalPrice} VND
+                                    </TableCell>
+                                    <TableCell>
+                                      {/* <Link to={`/order-detail/${order.id}`}> */}
+                                        Xem
+                                      {/* </Link> */}
+                                    </TableCell>
+                                  </TableRow>
+                                ))
+                              ) : (
+                                <p>chưa có đơn hàng nào.</p>
+                              )}
+                            </TableBody>
+                          </Table>
                           </div>
                         </Card.Body>
                       </Accordion.Collapse>
