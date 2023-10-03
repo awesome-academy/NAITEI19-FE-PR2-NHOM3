@@ -4,7 +4,7 @@ import ShopTopAction from "../../components/product/ShopTopAction";
 
 const ShopTopbar = ({
   getLayout,
-  getFilterSortParams,
+  getFilterParamsBody,
   productCount,
   sortedProductCount
 }) => {
@@ -13,7 +13,7 @@ const ShopTopbar = ({
       {/* shop top action */}
       <ShopTopAction
         getLayout={getLayout}
-        getFilterSortParams={getFilterSortParams}
+        getFilterParamsBody={getFilterParamsBody}
         productCount={productCount}
         sortedProductCount={sortedProductCount}
       />
