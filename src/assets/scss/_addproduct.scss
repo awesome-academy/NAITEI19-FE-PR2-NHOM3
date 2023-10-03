@@ -1,0 +1,345 @@
+.container {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 20px;
+}
+
+.error {
+  color: #424242;
+  font-style: italic;
+  font-size: 12px;
+}
+.sidebar-widget-tag {
+  display: flex;
+  flex-wrap: wrap;
+  ul {
+    li {
+      display: inline-block;
+
+      margin: 0 10px 15px 0;
+
+      a,
+      button {
+        line-height: 1;
+
+        display: inline-block;
+
+        padding: 9px 17px 12px;
+
+        text-transform: capitalize;
+
+        color: #424242;
+        border: none;
+        border-radius: 50px;
+        background: none;
+        background-color: #f6f6f6;
+
+        &:hover,
+        &.active {
+          color: #fff;
+          background-color: #007bff;
+        }
+      }
+    }
+  }
+}
+
+.panel-heading {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.panel-title {
+  font-size: 24px;
+}
+
+.panel {
+  margin-bottom: 20px;
+  border: 1px solid #ebebeb;
+  padding: 20px;
+  border-radius: 4px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image-container {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.image-upload-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.main-image {
+  // width: 300px;
+  height: 400px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  border-radius: 15px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+.image-upload-preview {
+  position: relative;
+  border: 2px dashed #ccc;
+  border-radius: 4px;
+  padding: 20px;
+  text-align: center;
+  // width: 300px;
+  height: 400px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    overflow: hidden;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.image-upload-preview h3 {
+  font-size: 48px;
+  color: #ccc;
+  margin-bottom: 10px;
+}
+
+.image-upload-preview p {
+  font-size: 18px;
+  color: #ccc;
+}
+.thumbnail-images {
+  margin-right: auto;
+  display: inline-block;
+
+  .thumbnail-image {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    float: left;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 2px solid transparent;
+      transition: border-color 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border: none;
+      color: black;
+      font-weight: bold;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: rgb(255, 255, 255);
+      }
+
+      &::before {
+        content: "x";
+        display: block;
+        line-height: 20px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.form-horizontal {
+  width: 100%;
+  display: flex;
+}
+
+.input-container {
+  width: 100%;
+}
+
+.group-price {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.group-price .col-lg-4 {
+  margin-bottom: 15px;
+}
+
+.billing-btn button {
+  background-color: #f2f2f2;
+  border: medium none;
+  color: #000;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 16px 35px 17px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
+
+  &:hover {
+    background: #a749ff;
+    color: #fff;
+  }
+}
+
+@media (min-width: 768px) {
+  .image-container {
+    width: 50%;
+    margin-bottom: 0;
+  }
+
+  .input-container {
+    width: 50%;
+  }
+
+  .thumbnail-image {
+    max-width: 40px;
+    height: 40px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+  }
+
+  .group-price .col-lg-4 {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .form-group .col-sm-9 {
+    margin-bottom: 10px;
+  }
+
+  .form-group .form-control {
+    width: 100%;
+  }
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  label {
+    display: block;
+    margin-bottom: 10px;
+
+    input[type="checkbox"] {
+      font-size: 8px;
+      width: 10px; // Chỉnh kích thước nút checkbox
+      height: 10px; // Chỉnh kích thước nút checkbox
+      margin-right: 10px;
+
+      &:checked + span {
+        background-color: red;
+      }
+
+      &:checked + span::after {
+        content: "\f00c"; // Thay đổi nội dung biểu tượng khi checkbox được chọn
+        font-family: "Font Awesome"; // Sử dụng font icon, có thể thay bằng font icon khác
+        font-size: 14px;
+        color: green;
+        margin-left: 5px;
+      }
+    }
+
+    span {
+      display: inline-block;
+      position: relative;
+      padding-left: 15px;
+      cursor: pointer;
+      margin: 10px;
+
+      &::before {
+        content: "";
+        display: inline-block;
+        width: 4px; // Chỉnh kích thước nút checkbox
+        height: 4px; // Chỉnh kích thước nút checkbox
+        border: 1px solid #ccc;
+        position: absolute;
+        left: 0;
+        top: 1px;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+      &:hover {
+        color: #a749ff;
+      }
+    }
+  }
+}
+
+.tag-button {
+  display: inline-block;
+  padding: 5px 10px;
+  margin: 5px;
+  background-color: #e9e9e9;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.tag-button.active {
+  background-color: #a749ff;
+  color: #ffffff;
+}
+.addflower-btn {
+  position: absolute;
+  right: 25px;
+  button {
+    background-color: #a749ff;
+    border: medium none;
+    color: #fff;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    padding: 16px 35px 17px;
+    margin: 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    position: relative;
+    right: 0;
+    margin: 0 auto;width: 150px;
+    
+    
+  }
+}
