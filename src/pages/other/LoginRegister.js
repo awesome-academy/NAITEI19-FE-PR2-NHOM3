@@ -1,17 +1,16 @@
-import axios from "axios";
 import PropTypes from "prop-types";
 import React, { Fragment } from "react";
 import MetaTags from "react-meta-tags";
 import { Link } from "react-router-dom";
 // import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
-import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
+import Tab from "react-bootstrap/Tab";
 import LayoutTwo from "../../layouts/LayoutTwo";
 // import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
-import { fetchUser } from "../../redux/actions/authAction";
 import { connect } from "react-redux";
-import { useToasts } from "react-toast-notifications";
 import { useHistory } from "react-router-dom";
+import { useToasts } from "react-toast-notifications";
+import { fetchUser } from "../../redux/actions/authAction";
 import serverAPI from "../../serverAPI";
 
 const LoginForm = ({ submitHandler }) => {

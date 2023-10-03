@@ -1,81 +1,9 @@
 import React from "react";
-import BootstrapTable from "react-bootstrap-table-next";
-import paginationFactory, { PaginationListStandalone, PaginationProvider, SizePerPageDropdownStandalone } from 'react-bootstrap-table2-paginator';
 
 import { Button } from "react-bootstrap";
 import AdminLayout from "../../components/admin/Layout";
+import RemoteConfigTable from "../../components/admin/RemoteConfigTable";
 import serverAPI from "../../serverAPI";
-
-const RemotePagination = ({ columns, data, expandRow, noDataIndication, page, sizePerPage, onTableChange, totalSize }) => (
-  <div>
-    <PaginationProvider
-      pagination={
-        paginationFactory({
-          custom: true,
-          page,
-          sizePerPage,
-          sizePerPageList: [{
-            text: '5', value: 5
-          }, {
-            text: '10', value: 10
-          }],
-          sizePerPageRenderer: ({
-            options,
-            currSizePerPage,
-            onSizePerPageChange
-          }) => (
-            <div className="btn-group" role="group">
-              {
-                options.map((option) => {
-                  const isSelect = currSizePerPage === `${option.page}`;
-                  return (
-                    <button
-                      key={option.text}
-                      type="button"
-                      onClick={() => onSizePerPageChange(option.page)}
-                      className={`btn ${isSelect ? 'btn-secondary' : 'btn-warning'}`}
-                    >
-                      {option.text}
-                    </button>
-                  );
-                })
-              }
-            </div>
-          ),
-          totalSize
-        })
-      }
-    >
-      {
-        ({
-          paginationProps,
-          paginationTableProps
-        }) => (
-          <div>
-            <BootstrapTable
-              remote
-              keyField="id"
-              data={data}
-              columns={columns}
-              expandRow={expandRow}
-              noDataIndication={noDataIndication}
-              onTableChange={onTableChange}
-              {...paginationTableProps}
-            />
-            <div className="d-flex justify-content-between">
-              <SizePerPageDropdownStandalone
-                {...paginationProps}
-              />
-              <PaginationListStandalone
-                {...paginationProps}
-              />
-            </div>
-          </div>
-        )
-      }
-    </PaginationProvider>
-  </div>
-);
 
 const UserInfoRenderer = ({ user }) => (
   <div className="container-fluid mb-5">
@@ -180,7 +108,7 @@ const ManageUser = () => {
 
   return (
     <AdminLayout>
-      <h1>Manage User</h1>
+      <h1>Manage Users</h1>
       <hr />
       <div className="my-5">
         <form className="position-relative">
@@ -199,7 +127,7 @@ const ManageUser = () => {
             }} />
         </form>
       </div>
-      <RemotePagination
+      <RemoteConfigTable
         columns={columns}
         data={users}
         page={currentPage}

@@ -24,6 +24,7 @@ const Contact = lazy(() => import("./pages/other/Contact"));
 const Cart = lazy(() => import("./pages/other/Cart"));
 const ManageUser = lazy(() => import("./pages/admin/ManageUser"));
 const ManageCategory = lazy(() => import("./pages/admin/ManageCategory"));
+const ManageProducts = lazy(() => import("./pages/admin/ManageProducts"));
 const Checkout = lazy(() => import("./pages/other/Checkout"));
 const ManageOrder = lazy(() => import("./pages/admin/ManageOrder"))
 
@@ -110,7 +111,10 @@ const App = (props) => {
                 path={process.env.PUBLIC_URL + "/admin/categories"}
                 component={ManageCategory}
               />
-
+              <Route
+                path={process.env.PUBLIC_URL + "/admin/products"}
+                component={ManageProducts}
+              />
               <Route
                 path={process.env.PUBLIC_URL + "/checkout"}
                 component={Checkout}

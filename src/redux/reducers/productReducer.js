@@ -1,18 +1,26 @@
-import { FETCH_PRODUCTS_SUCCESS } from "../actions/productActions";
+import { FETCH_CATEGORIES, FETCH_PRODUCTS_SUCCESS } from "../actions/productActions";
 
 const initState = {
-  products: []
+  products: [],
+  categories: [],
 };
 
 const productReducer = (state = initState, action) => {
-  if (action.type === FETCH_PRODUCTS_SUCCESS) {
-    return {
-      ...state,
-      products: action.payload
-    };
-  }
 
-  return state;
+  switch (action.type) {
+    case FETCH_PRODUCTS_SUCCESS:
+      return {
+        ...state,
+        products: action.payload
+      };
+    case FETCH_CATEGORIES:
+      return {
+        ...state,
+        categories: action.payload
+      };
+    default:
+      return state;
+  }
 };
 
 export default productReducer;
