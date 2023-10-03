@@ -5,9 +5,11 @@ import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
 import SectionTitleThree from "../../components/section-title/SectionTitleThree";
 import ProductGridTwo from "./ProductGridTwo";
+import RecentlyViewProduct from "./RecentlyViewProduct";
+import { connect } from "react-redux";
 
 
-const TabProductFour = ({ spaceBottomClass, category, productTabClass }) => {
+const TabProductFour = ({ spaceBottomClass, category, productTabClass, authData }) => {
   return (
     <div className={`product-area ${spaceBottomClass ? spaceBottomClass : ""}`}>
       <div className="container">
@@ -37,6 +39,14 @@ const TabProductFour = ({ spaceBottomClass, category, productTabClass }) => {
                 <h4>Sale Items</h4>
               </Nav.Link>
             </Nav.Item>
+            {
+              authData.currentUser && 
+              <Nav.Item>
+                <Nav.Link eventKey="recentlyView">
+                  <h4>Viewed Recently</h4>
+                </Nav.Link>
+              </Nav.Item>
+            }
           </Nav>
           <Tab.Content>
             <Tab.Pane eventKey="newArrival">
@@ -69,6 +79,16 @@ const TabProductFour = ({ spaceBottomClass, category, productTabClass }) => {
                 />
               </div>
             </Tab.Pane>
+            {
+              authData.currentUser &&
+              <Tab.Pane eventKey="recentlyView">
+                <div className="row">
+                  <RecentlyViewProduct
+                    spaceBottomClass="mb-25"
+                  />
+                </div>
+              </Tab.Pane>
+            }
           </Tab.Content>
         </Tab.Container>
         <div className="view-more text-center mt-20 toggle-btn6 col-12">
@@ -87,6 +107,13 @@ const TabProductFour = ({ spaceBottomClass, category, productTabClass }) => {
 TabProductFour.propTypes = {
   category: PropTypes.string,
   spaceBottomClass: PropTypes.string,
+  authData: PropTypes.object
 };
 
-export default TabProductFour;
+const mapStateToProps = state => {
+  return {
+    authData: state.authData
+  };
+};
+
+export default connect(mapStateToProps)(TabProductFour);

@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import MetaTags from "react-meta-tags";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { connect } from "react-redux";
@@ -8,9 +8,18 @@ import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import RelatedProductSlider from "../../wrappers/product/RelatedProductSlider";
 import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab";
 import ProductImageDescription from "../../wrappers/product/ProductImageDescription";
+import { useDispatch } from "react-redux";
+import { updateRecentlyView } from "../../redux/actions/authAction";
 
 const ProductTabLeft = ({ location, product }) => {
   const { pathname } = location;
+  const dispatch = useDispatch();
+
+  function setRecentView() {
+    dispatch(updateRecentlyView(product.id))
+  }
+
+  useEffect(()=>setRecentView(),[])
 
   return (
     <Fragment>
@@ -54,7 +63,8 @@ const ProductTabLeft = ({ location, product }) => {
 
         {/* facebook comment */}
         <div className="d-flex justify-content-center">
-          <div class="fb-comments" data-href={`${process.env.REACT_APP_DEPLOY_FB_COMMENT+product.id}`} data-width="600" data-numposts="2"></div>
+          {/* <div class="fb-comments" data-href={`${process.env.REACT_APP_DEPLOY_FB_COMMENT+product.id}`} data-width="600" data-numposts="2"></div> */}
+          <div class="fb-comments" data-href={``} data-width="600" data-numposts="2"></div>
         </div>
       </LayoutOne>
     </Fragment>
