@@ -15,24 +15,24 @@ const ProductTabLeft = ({ location, product }) => {
   return (
     <Fragment>
       <MetaTags>
-	  	<title>Ecom | Product Detail</title>
-		  <meta
+        <title>Ecom | Product Detail</title>
+        <meta
           name="description"
           content="Product page of ecom website"
         />
-	  </MetaTags>
+      </MetaTags>
 
-	  <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
+      <BreadcrumbsItem to={process.env.PUBLIC_URL + "/"}>Home</BreadcrumbsItem>
       <BreadcrumbsItem to={process.env.PUBLIC_URL + pathname}>
-	  	Shop Product
+        Shop Product
       </BreadcrumbsItem>
-	  
-	  <LayoutOne headerTop="visible">
-		{/* breadcrumb  */}
-		<Breadcrumb />
 
-		 {/* product description with image */}
-		 <ProductImageDescription
+      <LayoutOne headerTop="visible">
+        {/* breadcrumb  */}
+        <Breadcrumb />
+
+        {/* product description with image */}
+        <ProductImageDescription
           spaceTopClass="pt-100"
           spaceBottomClass="pb-100"
           product={product}
@@ -52,23 +52,27 @@ const ProductTabLeft = ({ location, product }) => {
           category={product.category[0]}
         />
 
-	  </LayoutOne>
+        {/* facebook comment */}
+        <div className="d-flex justify-content-center">
+          <div class="fb-comments" data-href={`${process.env.REACT_APP_DEPLOY_FB_COMMENT+product.id}`} data-width="600" data-numposts="2"></div>
+        </div>
+      </LayoutOne>
     </Fragment>
   );
 };
 
 ProductTabLeft.propTypes = {
-	location: PropTypes.object,
-	product: PropTypes.object
+  location: PropTypes.object,
+  product: PropTypes.object
 };
 
 const mapStateToProps = (state, ownProps) => {
-	const itemId = ownProps.match.params.id;
-	return {
-	  product: state.productData.products.filter(
-		single => single.id === itemId
-	  )[0]
-	};
+  const itemId = ownProps.match.params.id;
+  return {
+    product: state.productData.products.filter(
+      single => single.id === itemId
+    )[0]
   };
-  
-  export default connect(mapStateToProps)(ProductTabLeft);
+};
+
+export default connect(mapStateToProps)(ProductTabLeft);
