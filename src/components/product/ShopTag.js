@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import { setActiveSort } from "../../helpers/product";
 
-const ShopTag = ({ tags, getSortParams }) => {
+const ShopTag = ({ tags, getFilterParamsBody }) => {
   return (
     <div className="sidebar-widget mt-50">
       <h4 className="pro-sidebar-title">Tag </h4>
@@ -13,8 +13,8 @@ const ShopTag = ({ tags, getSortParams }) => {
               return (
                 <li key={key}>
                   <button
-                    onClick={e => {
-                      getSortParams("tag", tag);
+                    onClick={(e) => {
+                      getFilterParamsBody("tag", tag);
                       setActiveSort(e);
                     }}
                   >
@@ -34,7 +34,7 @@ const ShopTag = ({ tags, getSortParams }) => {
 
 ShopTag.propTypes = {
   getSortParams: PropTypes.func,
-  tags: PropTypes.array
+  tags: PropTypes.array,
 };
 
 export default ShopTag;

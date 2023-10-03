@@ -1,16 +1,13 @@
 import PropTypes from "prop-types";
 import React, { useState, useEffect } from "react";
-import {
-  getIndividualTags,
-  getIndividualColors,
-} from "../../helpers/product";
+import { getIndividualTags, getIndividualColors } from "../../helpers/product";
 import ShopSearch from "../../components/product/ShopSearch";
 import ShopCategories from "../../components/product/ShopCategories";
 import ShopColor from "../../components/product/ShopColor";
 import ShopTag from "../../components/product/ShopTag";
 import ShopPrice from "../../components/product/ShopPrice";
 
-const ShopSidebar = ({ products, getSortParams, sideSpaceClass }) => {
+const ShopSidebar = ({ products, getFilterParamsBody, sideSpaceClass }) => {
   const [uniqueCategories, setUniqueCategories] = useState([]);
   const [uniquePrices, setUniquePrices] = useState([]);
   const uniqueColors = getIndividualColors(products);
@@ -37,22 +34,28 @@ const ShopSidebar = ({ products, getSortParams, sideSpaceClass }) => {
   return (
     <div className={`sidebar-style ${sideSpaceClass ? sideSpaceClass : ""}`}>
       {/* shop search */}
-      <ShopSearch />
+      <ShopSearch getFilterParamsBody={getFilterParamsBody} />
 
       {/* filter by categories */}
       <ShopCategories
         categories={uniqueCategories}
-        getSortParams={getSortParams}
+        getFilterParamsBody={getFilterParamsBody}
       />
 
       {/* filter by color */}
-      <ShopColor colors={uniqueColors} getSortParams={getSortParams} />
+      <ShopColor
+        colors={uniqueColors}
+        getFilterParamsBody={getFilterParamsBody}
+      />
 
       {/* filter by tag */}
-      <ShopTag tags={uniqueTags} getSortParams={getSortParams} />
+      <ShopTag tags={uniqueTags} getFilterParamsBody={getFilterParamsBody} />
 
       {/* filter by price */}
-      <ShopPrice prices={uniquePrices} getSortParams={getSortParams} />
+      <ShopPrice
+        prices={uniquePrices}
+        getFilterParamsBody={getFilterParamsBody}
+      />
     </div>
   );
 };

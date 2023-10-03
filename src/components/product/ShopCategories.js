@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { setActiveSort } from "../../helpers/product";
 
-const ShopCategories = ({ categories, getSortParams }) => {
+const ShopCategories = ({ categories, getFilterParamsBody }) => {
   const [currentOpenCategoryId, setCurrentOpenCategoryId] = useState();
 
   const handleCurrentOpenCategory = (categories, category) => {
@@ -24,7 +24,7 @@ const ShopCategories = ({ categories, getSortParams }) => {
               <div className="sidebar-widget-list-left">
                 <button
                   onClick={(e) => {
-                    getSortParams("category", "");
+                    getFilterParamsBody("category", "");
                     setActiveSort(e);
                     setCurrentOpenCategoryId();
                   }}
@@ -40,7 +40,7 @@ const ShopCategories = ({ categories, getSortParams }) => {
                     <div className="sidebar-widget-list-left">
                       <button
                         onClick={(e) => {
-                          getSortParams("category", category.id);
+                          getFilterParamsBody("category", category.id);
                           setActiveSort(e);
                           handleCurrentOpenCategory(categories, category);
                         }}
@@ -58,7 +58,7 @@ const ShopCategories = ({ categories, getSortParams }) => {
                   <div className="sidebar-widget-list-left">
                     <button
                       onClick={(e) => {
-                        getSortParams("category", category.id);
+                        getFilterParamsBody("category", category.id);
                         setActiveSort(e);
                         handleCurrentOpenCategory(categories, category);
                       }}

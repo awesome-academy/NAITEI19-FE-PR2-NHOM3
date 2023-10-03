@@ -59,61 +59,60 @@ export const getProductCartQuantity = (cartItems, product, color, size) => {
 
 //get products based on category
 export const getSortedProducts = (products, sortType, sortValue) => {
-  if (products && sortType && sortValue) {
-    if (sortType === "category") {
-      return products.filter(
+  if (products) {
+    let tempProducts = [...products];
+    if (sortType.search) {
+      tempProducts = tempProducts.filter((product) =>
+        product.name.toLowerCase().includes(sortValue.search.toLowerCase())
+      );
+    }
+    if (sortType.category) {
+      tempProducts = tempProducts.filter(
         (product) =>
-          product.category.filter((single) => single === sortValue)[0]
+          product.category.filter((single) => single === sortValue.category)[0]
       );
     }
-    if (sortType === "tag") {
-      return products.filter(
-        (product) => product.tag.filter((single) => single === sortValue)[0]
+    if (sortType.tag) {
+      tempProducts = tempProducts.filter(
+        (product) => product.tag.filter((single) => single === sortValue.tag)[0]
       );
     }
-    if (sortType === "color") {
-      return products.filter(
-        (product) =>
-          product.variation &&
-          product.variation.filter((single) => single.color === sortValue)[0]
-      );
-    }
-    if (sortType === "size") {
-      return products.filter(
+    if (sortType.color) {
+      tempProducts = tempProducts.filter(
         (product) =>
           product.variation &&
           product.variation.filter(
-            (single) =>
-              single.size.filter((single) => single.name === sortValue)[0]
+            (single) => single.color === sortValue.color
           )[0]
       );
     }
 
-    if (sortType === "price") {
-      return products.filter(
+    if (sortType.price) {
+      tempProducts = tempProducts.filter(
         (product) =>
-          product.price >= sortValue[0] && product.price <= sortValue[1]
+          product.price >= sortValue.price[0] &&
+          product.price <= sortValue.price[1]
       );
     }
 
-    if (sortType === "filterSort") {
-      let sortProducts = [...products];
-      if (sortValue === "default") {
+    if (sortType.sort) {
+      let sortProducts = [...tempProducts];
+      if (sortValue.sort === "default") {
         return sortProducts;
       }
-      if (sortValue === "priceHighToLow") {
+      if (sortValue.sort === "priceHighToLow") {
         return sortProducts.sort((a, b) => {
           return b.price - a.price;
         });
       }
-      if (sortValue === "priceLowToHigh") {
+      if (sortValue.sort === "priceLowToHigh") {
         return sortProducts.sort((a, b) => {
           return a.price - b.price;
         });
       }
     }
-  }
-  return products;
+    return tempProducts;
+  } else return products;
 };
 
 // get individual element
