@@ -81,7 +81,7 @@ const ReviewForm = ({ prodId, reviews }) => {
 }
 
 ReviewForm.propTypes = {
-    prodId: PropTypes.number,
+    prodId: PropTypes.any,
     reviews: PropTypes.array
 };
 
