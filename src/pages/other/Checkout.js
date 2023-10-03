@@ -7,13 +7,65 @@ import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { getDiscountPrice } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
+import { createOrder } from "../../serverAPI";
+import { useState } from "react";
+import { deleteAllFromCart } from "../../redux/actions/cartActions";
+import { v4 as uuidv4 } from "uuid"; 
 
-const Checkout = ({ location, cartItems, currency }) => {
+const Checkout = ({ location, cartItems, currency, user, deleteAllFromCart }) => {
   const { pathname } = location;
+  const [isOrderPlaced, setOrderPlaced] = useState(false);
+
   let cartTotalPrice = 0;
+  console.log(cartItems)
+  console.log(user)
+
+
+  
+  const handlePlaceOrder = async () => {
+    try {
+      const orderId = uuidv4();
+      let orderTotalPrice = 0;
+      cartItems.forEach((cartItem) => {
+        const discountedPrice = getDiscountPrice(
+          cartItem.price,
+          cartItem.discount
+        );
+        const finalProductPrice = (cartItem.price * currency.currencyRate).toFixed(2);
+        const finalDiscountedPrice = (
+          discountedPrice * currency.currencyRate
+        ).toFixed(2);
+
+        discountedPrice !== null
+          ? (orderTotalPrice += finalDiscountedPrice * cartItem.quantity)
+          : (orderTotalPrice += finalProductPrice * cartItem.quantity);
+      });
+      const orderData = {
+        id: orderId,
+        userId:user.id ,
+        FirstName:user.firstname,
+        LastName :user.lastname,
+        Phone : user.phone,
+        Email : user.email,
+        cartItems,
+        orderDate: new Date().toISOString(),
+        totalPrice: orderTotalPrice,
+        status: "Chờ xác nhận", 
+        deliveryDate: "Chưa có",
+
+      }
+      await createOrder(orderData);
+      setOrderPlaced(true);
+      deleteAllFromCart();
+    } catch (error) {
+      console.error("Lỗi không tạo được đơn hàng", error)
+    }
+  }
 
   return (
-    <Fragment>
+    <div>
+    {!isOrderPlaced ? (
+      <Fragment>
       <MetaTags>
         <title>Flone | Checkout</title>
         <meta
@@ -198,7 +250,9 @@ const Checkout = ({ location, cartItems, currency }) => {
                       <div className="payment-method"></div>
                     </div>
                     <div className="place-order mt-25">
-                      <button className="btn-hover">Place Order</button>
+                      <button className="btn-hover" onClick={handlePlaceOrder}>
+                        Place Order
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -224,20 +278,35 @@ const Checkout = ({ location, cartItems, currency }) => {
         </div>
       </LayoutOne>
     </Fragment>
+    ): (
+      <div>Order has been placed successfully!</div>
+    )}
+    </div>
   );
 };
 
 Checkout.propTypes = {
   cartItems: PropTypes.array,
   currency: PropTypes.object,
-  location: PropTypes.object
+  location: PropTypes.object,
+  user: PropTypes.object,
+  deleteAllFromCart: PropTypes.func,
 };
 
 const mapStateToProps = state => {
   return {
     cartItems: state.cartData,
-    currency: state.currencyData
+    currency: state.currencyData,
+    user: state.authData.currentUser
   };
 };
 
-export default connect(mapStateToProps)(Checkout);
+const mapDispatchToProps = dispatch => {
+  return {
+    deleteAllFromCart: addToast => {
+      dispatch(deleteAllFromCart(addToast));
+    }
+  };
+};
+
+export default connect(mapStateToProps,mapDispatchToProps)(Checkout);

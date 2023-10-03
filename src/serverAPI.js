@@ -7,4 +7,13 @@ const serverAPI = Axios.create({
   }
 })
 
+export const createOrder = async (orderData) => {
+  try {
+    const response = await serverAPI.post('/orders', orderData);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
 export default serverAPI;

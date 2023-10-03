@@ -1,0 +1,752 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "24BKA3994",
+      "firstname": "First",
+      "lastname": "Last",
+      "phone": "42352345",
+      "email": "alpha@email.com",
+      "password": "abc1234",
+      "avatar": "https://w7.pngwing.com/pngs/609/846/png-transparent-discord-logo-discord-computer-icons-logo-computer-software-avatar-miscellaneous-blue-angle.png",
+      "role": "ADMIN"
+    },
+    {
+      "id": 2,
+      "username": "sun-asterisk",
+      "firstname": "Sun",
+      "lastname": "Asterisk",
+      "phone": "8031248091247912",
+      "email": "hr@sun-asterisk.com",
+      "password": "abc1234",
+      "avatar": "https://w7.pngwing.com/pngs/609/846/png-transparent-discord-logo-discord-computer-icons-logo-computer-software-avatar-miscellaneous-blue-angle.png",
+      "role": "USER"
+    },
+    {
+      "id": 4,
+      "username": "24BKA3994",
+      "firstname": "First",
+      "lastname": "Last",
+      "phone": "42352345",
+      "email": "alpha@email.com",
+      "password": "abc1234",
+      "addresses": [
+        {
+          "id": 1,
+          "name": "John Doe",
+          "street": "Dai Co Viet",
+          "ward": "Bach Khoa",
+          "district": "Hai Ba Trung",
+          "city": "Ha Noi"
+        },
+        {
+          "id": 2,
+          "name": "John Doe 2",
+          "street": "Tran Dai Nghia",
+          "ward": "Bach Khoa",
+          "district": "Hai Ba Trung",
+          "city": "Ha Noi"
+        }
+      ],
+      "avatar": "https://w7.pngwing.com/pngs/609/846/png-transparent-discord-logo-discord-computer-icons-logo-computer-software-avatar-miscellaneous-blue-angle.png",
+      "role": "ADMIN"
+    },
+    {
+      "id": 6,
+      "username": "24BKA3996",
+      "firstname": "First",
+      "lastname": "Last",
+      "phone": "42352345",
+      "email": "gamma@email.com",
+      "password": "abcd1234",
+      "addresses": [
+        {
+          "id": 1,
+          "name": "John Doe",
+          "street": "Dai Co Viet",
+          "ward": "Bach Khoa",
+          "district": "Hai Ba Trung",
+          "city": "Ha Noi"
+        },
+        {
+          "id": 2,
+          "name": "John Doe 2",
+          "street": "Tran Dai Nghia",
+          "ward": "Bach Khoa",
+          "district": "Hai Ba Trung",
+          "city": "Ha Noi"
+        }
+      ],
+      "avatar": "https://w7.pngwing.com/pngs/609/846/png-transparent-discord-logo-discord-computer-icons-logo-computer-software-avatar-miscellaneous-blue-angle.png",
+      "role": "USER"
+    },
+    {
+      "id": 7,
+      "username": "24BKA3994",
+      "firstname": "First",
+      "lastname": "Last",
+      "phone": "42352345",
+      "email": "alpha@email.com",
+      "password": "abc1234",
+      "addresses": [
+        {
+          "id": 1,
+          "name": "John Doe",
+          "street": "Dai Co Viet",
+          "ward": "Bach Khoa",
+          "district": "Hai Ba Trung",
+          "city": "Ha Noi"
+        },
+        {
+          "id": 2,
+          "name": "John Doe 2",
+          "street": "Tran Dai Nghia",
+          "ward": "Bach Khoa",
+          "district": "Hai Ba Trung",
+          "city": "Ha Noi"
+        }
+      ],
+      "avatar": "https://w7.pngwing.com/pngs/609/846/png-transparent-discord-logo-discord-computer-icons-logo-computer-software-avatar-miscellaneous-blue-angle.png",
+      "role": "ADMIN"
+    },
+    {
+      "id": 8,
+      "username": "24BKA3996",
+      "firstname": "First",
+      "lastname": "Last",
+      "phone": "42352345",
+      "email": "gamma@email.com",
+      "password": "abcd1234",
+      "addresses": [
+        {
+          "id": 1,
+          "name": "John Doe",
+          "street": "Dai Co Viet",
+          "ward": "Bach Khoa",
+          "district": "Hai Ba Trung",
+          "city": "Ha Noi"
+        },
+        {
+          "id": 2,
+          "name": "John Doe 2",
+          "street": "Tran Dai Nghia",
+          "ward": "Bach Khoa",
+          "district": "Hai Ba Trung",
+          "city": "Ha Noi"
+        }
+      ],
+      "avatar": "https://w7.pngwing.com/pngs/609/846/png-transparent-discord-logo-discord-computer-icons-logo-computer-software-avatar-miscellaneous-blue-angle.png",
+      "role": "USER"
+    },
+    {
+      "id": 9,
+      "username": "24BKA3994",
+      "firstname": "First",
+      "lastname": "Last",
+      "phone": "42352345",
+      "email": "alpha@email.com",
+      "password": "abc1234",
+      "addresses": [
+        {
+          "id": 1,
+          "name": "John Doe",
+          "street": "Dai Co Viet",
+          "ward": "Bach Khoa",
+          "district": "Hai Ba Trung",
+          "city": "Ha Noi"
+        },
+        {
+          "id": 2,
+          "name": "John Doe 2",
+          "street": "Tran Dai Nghia",
+          "ward": "Bach Khoa",
+          "district": "Hai Ba Trung",
+          "city": "Ha Noi"
+        }
+      ],
+      "avatar": "https://w7.pngwing.com/pngs/609/846/png-transparent-discord-logo-discord-computer-icons-logo-computer-software-avatar-miscellaneous-blue-angle.png",
+      "role": "ADMIN"
+    },
+    {
+      "id": 11,
+      "username": "Khoa Nguyen",
+      "firstname": "Nguyen",
+      "lastname": "Khoa",
+      "phone": "0964706608",
+      "email": "khoahoang151@gmail.com",
+      "password": "Khoa9999",
+      "addresses": [
+        {
+          "id": 1,
+          "name": "Nguyen Hoang Khoa",
+          "street": "To Ky",
+          "ward": "UIT",
+          "district": "Tan Binh",
+          "city": "Ho Chi Minh"
+        },
+        {
+          "id": 2,
+          "name": "Nguyen Hoang Khoa",
+          "street": "Bau Cat",
+          "ward": "UIT",
+          "district": "Binh Thanh",
+          "city": "Ho Chi Minh"
+        }
+      ],
+      "avatar": "https://w7.pngwing.com/pngs/609/846/png-transparent-discord-logo-discord-computer-icons-logo-computer-software-avatar-miscellaneous-blue-angle.png",
+      "role": "USER"
+    }
+  ],
+  "prices": [
+    {
+      "id": 1,
+      "label": "1 - 10",
+      "range": [
+        1,
+        10
+      ]
+    },
+    {
+      "id": 2,
+      "label": "11 - 20",
+      "range": [
+        11,
+        20
+      ]
+    },
+    {
+      "id": 3,
+      "label": "20+",
+      "range": [
+        21,
+        10000000000000
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "fashion"
+    },
+    {
+      "id": 2,
+      "name": "jacket",
+      "parentId": 1
+    },
+    {
+      "id": 3,
+      "name": "shirt",
+      "parentId": 1
+    },
+    {
+      "id": 4,
+      "name": "computer & tablet"
+    },
+    {
+      "id": 5,
+      "name": "laptops",
+      "parentId": 4
+    },
+    {
+      "id": 6,
+      "name": "iPad",
+      "parentId": 4
+    },
+    {
+      "name": "audio",
+      "id": 7
+    },
+    {
+      "name": "headphone",
+      "parentId": 7,
+      "id": 8
+    },
+    {
+      "name": "keyboard",
+      "parentId": 4,
+      "id": 9
+    },
+    {
+      "name": "TV",
+      "id": 10
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "sku": "asdf123",
+      "name": "Ao khoac jacket",
+      "price": 12.45,
+      "discount": 10,
+      "offerEnd": "October 5, 2020 12:11:00",
+      "new": false,
+      "rating": 4,
+      "saleCount": 54,
+      "category": [
+        1,
+        2
+      ],
+      "tag": [
+        "fashion",
+        "men",
+        "jacket",
+        "full sleeve"
+      ],
+      "stock": 20,
+      "image": [
+        "/assets/img/product/fashion/1.jpg",
+        "/assets/img/product/fashion/3.jpg",
+        "/assets/img/product/fashion/6.jpg",
+        "/assets/img/product/fashion/8.jpg",
+        "/assets/img/product/fashion/9.jpg"
+      ],
+      "shortDescription": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
+      "fullDescription": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"
+    },
+    {
+      "id": "2",
+      "sku": "asdf124",
+      "name": "Lorem ipsum coat",
+      "price": 18.5,
+      "discount": 15,
+      "new": false,
+      "rating": 3,
+      "saleCount": 12,
+      "category": [
+        1,
+        3
+      ],
+      "tag": [
+        "fashion",
+        "women",
+        "coat",
+        "full sleeve"
+      ],
+      "variation": [
+        {
+          "color": "blue",
+          "image": "/assets/img/product/fashion/2.jpg",
+          "size": [
+            {
+              "name": "x",
+              "stock": 3
+            },
+            {
+              "name": "m",
+              "stock": 6
+            },
+            {
+              "name": "xl",
+              "stock": 7
+            }
+          ]
+        },
+        {
+          "color": "brown",
+          "image": "/assets/img/product/fashion/4.jpg",
+          "size": [
+            {
+              "name": "x",
+              "stock": 4
+            },
+            {
+              "name": "m",
+              "stock": 8
+            },
+            {
+              "name": "xl",
+              "stock": 3
+            },
+            {
+              "name": "xxl",
+              "stock": 7
+            }
+          ]
+        },
+        {
+          "color": "black",
+          "image": "/assets/img/product/fashion/5.jpg",
+          "size": [
+            {
+              "name": "x",
+              "stock": 3
+            },
+            {
+              "name": "m",
+              "stock": 7
+            },
+            {
+              "name": "xl",
+              "stock": 0
+            },
+            {
+              "name": "xxl",
+              "stock": 7
+            }
+          ]
+        }
+      ],
+      "image": [
+        "/assets/img/product/fashion/2.jpg",
+        "/assets/img/product/fashion/4.jpg",
+        "/assets/img/product/fashion/5.jpg",
+        "/assets/img/product/fashion/7.jpg",
+        "/assets/img/product/fashion/9.jpg"
+      ],
+      "shortDescription": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
+      "fullDescription": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"
+    },
+    {
+      "id": "3",
+      "sku": "asdf125",
+      "name": "Ao thun nam",
+      "price": 17.45,
+      "discount": 40,
+      "offerEnd": "October 2, 2020 12:11:00",
+      "new": true,
+      "rating": 5,
+      "saleCount": 36,
+      "category": [
+        4,
+        5
+      ],
+      "tag": [
+        "fashion",
+        "men",
+        "jacket",
+        "full sleeve"
+      ],
+      "stock": 10,
+      "image": [
+        "/assets/img/product/fashion/3.jpg",
+        "/assets/img/product/fashion/1.jpg",
+        "/assets/img/product/fashion/6.jpg",
+        "/assets/img/product/fashion/8.jpg",
+        "/assets/img/product/fashion/9.jpg"
+      ],
+      "shortDescription": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
+      "fullDescription": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"
+    },
+    {
+      "id": "4",
+      "sku": "asdf126",
+      "name": "Lorem ipsum fashion coat",
+      "price": 15.5,
+      "discount": 0,
+      "new": true,
+      "rating": 4,
+      "saleCount": 20,
+      "category": [
+        4,
+        6
+      ],
+      "tag": [
+        "fashion",
+        "women",
+        "coat",
+        "full sleeve"
+      ],
+      "variation": [
+        {
+          "color": "blue",
+          "image": "/assets/img/product/fashion/2.jpg",
+          "size": [
+            {
+              "name": "x",
+              "stock": 3
+            },
+            {
+              "name": "m",
+              "stock": 6
+            },
+            {
+              "name": "xl",
+              "stock": 7
+            }
+          ]
+        },
+        {
+          "color": "brown",
+          "image": "/assets/img/product/fashion/4.jpg",
+          "size": [
+            {
+              "name": "x",
+              "stock": 4
+            },
+            {
+              "name": "m",
+              "stock": 8
+            },
+            {
+              "name": "xl",
+              "stock": 3
+            },
+            {
+              "name": "xxl",
+              "stock": 7
+            }
+          ]
+        },
+        {
+          "color": "black",
+          "image": "/assets/img/product/fashion/5.jpg",
+          "size": [
+            {
+              "name": "x",
+              "stock": 3
+            },
+            {
+              "name": "m",
+              "stock": 7
+            },
+            {
+              "name": "xl",
+              "stock": 0
+            },
+            {
+              "name": "xxl",
+              "stock": 7
+            }
+          ]
+        }
+      ],
+      "image": [
+        "/assets/img/product/fashion/4.jpg",
+        "/assets/img/product/fashion/2.jpg",
+        "/assets/img/product/fashion/5.jpg",
+        "/assets/img/product/fashion/7.jpg",
+        "/assets/img/product/fashion/9.jpg"
+      ],
+      "shortDescription": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
+      "fullDescription": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"
+    },
+    {
+      "id": "5",
+      "sku": "asdf127",
+      "name": "Lorem ipsum female coat",
+      "price": 25.5,
+      "discount": 10,
+      "new": true,
+      "rating": 5,
+      "saleCount": 25,
+      "category": [
+        1,
+        3
+      ],
+      "tag": [
+        "fashion",
+        "women",
+        "coat",
+        "full sleeve"
+      ],
+      "variation": [
+        {
+          "color": "blue",
+          "image": "/assets/img/product/fashion/2.jpg",
+          "size": [
+            {
+              "name": "x",
+              "stock": 3
+            },
+            {
+              "name": "m",
+              "stock": 6
+            },
+            {
+              "name": "xl",
+              "stock": 7
+            }
+          ]
+        },
+        {
+          "color": "brown",
+          "image": "/assets/img/product/fashion/4.jpg",
+          "size": [
+            {
+              "name": "x",
+              "stock": 4
+            },
+            {
+              "name": "m",
+              "stock": 8
+            },
+            {
+              "name": "xl",
+              "stock": 3
+            },
+            {
+              "name": "xxl",
+              "stock": 7
+            }
+          ]
+        },
+        {
+          "color": "black",
+          "image": "/assets/img/product/fashion/5.jpg",
+          "size": [
+            {
+              "name": "x",
+              "stock": 3
+            },
+            {
+              "name": "m",
+              "stock": 7
+            },
+            {
+              "name": "xl",
+              "stock": 0
+            },
+            {
+              "name": "xxl",
+              "stock": 7
+            }
+          ]
+        }
+      ],
+      "image": [
+        "/assets/img/product/fashion/5.jpg",
+        "/assets/img/product/fashion/2.jpg",
+        "/assets/img/product/fashion/4.jpg",
+        "/assets/img/product/fashion/7.jpg",
+        "/assets/img/product/fashion/9.jpg"
+      ],
+      "shortDescription": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
+      "fullDescription": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?"
+    }
+  ],
+  "orders": [
+    {
+      "id": "960252d7-b7ca-425c-91ff-2ba919408d3a",
+      "userId": 11,
+      "FirstName": "Nguyen",
+      "LastName": "Khoa",
+      "Phone": "0964706608",
+      "Email": "khoahoang151@gmail.com",
+      "cartItems": [
+        {
+          "id": "1",
+          "sku": "asdf123",
+          "name": "Ao khoac jacket",
+          "price": 12.45,
+          "discount": 10,
+          "offerEnd": "October 5, 2020 12:11:00",
+          "new": false,
+          "rating": 4,
+          "saleCount": 54,
+          "category": [
+            1,
+            2
+          ],
+          "tag": [
+            "fashion",
+            "men",
+            "jacket",
+            "full sleeve"
+          ],
+          "stock": 20,
+          "image": [
+            "/assets/img/product/fashion/1.jpg",
+            "/assets/img/product/fashion/3.jpg",
+            "/assets/img/product/fashion/6.jpg",
+            "/assets/img/product/fashion/8.jpg",
+            "/assets/img/product/fashion/9.jpg"
+          ],
+          "shortDescription": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
+          "fullDescription": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?",
+          "quantity": 1,
+          "selectedProductColor": null,
+          "selectedProductSize": null,
+          "cartItemId": "08219a5a-1c50-41df-9709-7015ef14f8a9"
+        }
+      ],
+      "orderDate": "2023-10-03T03:11:59.139Z",
+      "totalPrice": 9.69,
+      "status": "Chờ xác nhận",
+      "deliveryDate": "Chưa có"
+    },
+    {
+      "id": "fbae8da6-5f3e-4070-8dad-a46a00f829c7",
+      "userId": 2,
+      "FirstName": "Sun",
+      "LastName": "Asterisk",
+      "Phone": "8031248091247912",
+      "Email": "hr@sun-asterisk.com",
+      "cartItems": [
+        {
+          "id": "1",
+          "sku": "asdf123",
+          "name": "Ao khoac jacket",
+          "price": 12.45,
+          "discount": 10,
+          "offerEnd": "October 5, 2020 12:11:00",
+          "new": false,
+          "rating": 4,
+          "saleCount": 54,
+          "category": [
+            1,
+            2
+          ],
+          "tag": [
+            "fashion",
+            "men",
+            "jacket",
+            "full sleeve"
+          ],
+          "stock": 20,
+          "image": [
+            "/assets/img/product/fashion/1.jpg",
+            "/assets/img/product/fashion/3.jpg",
+            "/assets/img/product/fashion/6.jpg",
+            "/assets/img/product/fashion/8.jpg",
+            "/assets/img/product/fashion/9.jpg"
+          ],
+          "shortDescription": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
+          "fullDescription": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?",
+          "quantity": 3,
+          "selectedProductColor": null,
+          "selectedProductSize": null,
+          "cartItemId": "5633d38b-eb0b-4116-8bc8-9ed56813c625"
+        },
+        {
+          "id": "3",
+          "sku": "asdf125",
+          "name": "Ao thun nam",
+          "price": 17.45,
+          "discount": 40,
+          "offerEnd": "October 2, 2020 12:11:00",
+          "new": true,
+          "rating": 5,
+          "saleCount": 36,
+          "category": [
+            4,
+            5
+          ],
+          "tag": [
+            "fashion",
+            "men",
+            "jacket",
+            "full sleeve"
+          ],
+          "stock": 10,
+          "image": [
+            "/assets/img/product/fashion/3.jpg",
+            "/assets/img/product/fashion/1.jpg",
+            "/assets/img/product/fashion/6.jpg",
+            "/assets/img/product/fashion/8.jpg",
+            "/assets/img/product/fashion/9.jpg"
+          ],
+          "shortDescription": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur.",
+          "fullDescription": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur? Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally circumstances occur in which toil and pain can procure him some great pleasure. To take a trivial example, which of us ever undertakes laborious physical exercise, except to obtain some advantage from it? But who has any right to find fault with a man who chooses to enjoy a pleasure that has no annoying consequences, or one who avoids a pain that produces no resultant pleasure?",
+          "quantity": 2,
+          "selectedProductColor": null,
+          "selectedProductSize": null,
+          "cartItemId": "9ab52d97-c3b2-4ebb-8f57-bc734dda7890"
+        }
+      ],
+      "orderDate": "2023-10-03T03:13:55.156Z",
+      "totalPrice": 47.19,
+      "status": "Chờ xác nhận",
+      "deliveryDate": "Chưa có"
+    }
+  ]
+}
