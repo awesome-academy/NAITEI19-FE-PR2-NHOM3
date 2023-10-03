@@ -27,7 +27,7 @@ const store = createStore(
 );
 
 // fetch products from json file
-store.dispatch(fetchUser(user));
+// store.dispatch(fetchUser(user));
 store.dispatch(fetchReviews(reviews));
 
 ReactDOM.render(

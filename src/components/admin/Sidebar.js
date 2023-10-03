@@ -26,6 +26,10 @@ export default function Sidebar({}) {
           <span className="d-inline-block mr-2"><i className="fa fa-tag fs-5"></i></span>
           <span className="fs-5">Categories</span>
         </a>
+        <a to="/admin/orders" className="list-group-item list-group-item-action py-2 sidebar-item">
+          <span className="d-inline-block mr-2"><i className="fa fa-tag fs-5"></i></span>
+          <span className="fs-5">Orders</span>
+        </a>
       </div>
     </div>
   );
