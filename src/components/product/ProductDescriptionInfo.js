@@ -2,6 +2,8 @@ import PropTypes from "prop-types";
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { getProductCartQuantity } from "../../helpers/product";
+import { addToCart } from "../../redux/actions/cartActions";
 import Rating from "./sub-components/ProductRating";
 
 const ProductDescriptionInfo = ({
@@ -11,6 +13,8 @@ const ProductDescriptionInfo = ({
   finalDiscountedPrice,
   finalProductPrice,
   addToast,
+  cartItems,
+  addToCart
 }) => {
   const [selectedProductColor, setSelectedProductColor] = useState(
     product.variation ? product.variation[0].color : ""
@@ -22,6 +26,13 @@ const ProductDescriptionInfo = ({
     product.variation ? product.variation[0].size[0].stock : product.stock
   );
   const [quantityCount, setQuantityCount] = useState(1);
+
+  const productCartQty = getProductCartQuantity(
+    cartItems,
+    product,
+    selectedProductColor,
+    selectedProductSize
+  );
 
   return (
     <div className="product-details-content ml-70">
@@ -150,14 +161,32 @@ const ProductDescriptionInfo = ({
               readOnly
             />
             <button
+              onClick={() =>
+                setQuantityCount(
+                  quantityCount < productStock - productCartQty
+                    ? quantityCount + 1
+                    : quantityCount
+                )
+              }
               className="inc qtybutton"
             >
               +
             </button>
           </div>
           <div className="pro-details-cart btn-hover">
-            {productStock && productStock > 0 ? (
-              <button>
+          {productStock && productStock > 0 ? (
+              <button
+                onClick={() =>
+                  addToCart(
+                    product,
+                    addToast,
+                    quantityCount,
+                    selectedProductColor,
+                    selectedProductSize
+                  )
+                }
+                disabled={productCartQty >= productStock}
+              >
                 {" "}
                 Add To Cart{" "}
               </button>
@@ -254,6 +283,30 @@ ProductDescriptionInfo.propTypes = {
   finalDiscountedPrice: PropTypes.number,
   finalProductPrice: PropTypes.number,
   product: PropTypes.object,
+  addToCart: PropTypes.func,
+  cartItems: PropTypes.array
 };
 
-export default connect(null)(ProductDescriptionInfo);
+const mapDispatchToProps = dispatch => {
+  return {
+    addToCart: (
+      item,
+      addToast,
+      quantityCount,
+      selectedProductColor,
+      selectedProductSize
+    ) => {
+      dispatch(
+        addToCart(
+          item,
+          addToast,
+          quantityCount,
+          selectedProductColor,
+          selectedProductSize
+        )
+      );
+    }
+  };
+};
+
+export default connect(null, mapDispatchToProps)(ProductDescriptionInfo);

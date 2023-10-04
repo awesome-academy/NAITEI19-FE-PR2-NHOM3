@@ -26,7 +26,8 @@
           "city": "Ha Noi"
         }
       ],
-      "role": "ADMIN"
+      "role": "ADMIN",
+      "recentViewIds":[]
     }
   ],
   "prices": [

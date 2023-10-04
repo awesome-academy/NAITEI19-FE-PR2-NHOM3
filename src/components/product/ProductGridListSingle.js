@@ -38,7 +38,7 @@ const ProductGridListSingle = ({
           className={`product-wrap ${spaceBottomClass ? spaceBottomClass : ""}`}
         >
           <div className="product-img">
-            <Link to={process.env.PUBLIC_URL + "/product/" + product.id}>
+            <Link to={process.env.PUBLIC_URL + "/product-tab-left/" + product.id}>
               <img
                 className="default-img"
                 src={process.env.PUBLIC_URL + product.image[0]}
@@ -93,7 +93,7 @@ const ProductGridListSingle = ({
                     Buy now{" "}
                   </a>
                 ) : product.variation && product.variation.length >= 1 ? (
-                  <Link to={`${process.env.PUBLIC_URL}/product/${product.id}`}>
+                  <Link to={`${process.env.PUBLIC_URL}/product-tab-left/${product.id}`}>
                     Select Option
                   </Link>
                 ) : product.stock && product.stock > 0 ? (

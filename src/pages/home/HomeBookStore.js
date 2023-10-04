@@ -17,7 +17,7 @@ const HomeBookStore = () => {
         <title>Flone | Book Store Home</title>
         <meta
           name="description"
-          content="Book store home of flone react minimalist eCommerce template."
+          content="E-commerce Store"
         />
       </MetaTags>
       <LayoutTwo>

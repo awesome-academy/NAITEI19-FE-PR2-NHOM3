@@ -194,7 +194,14 @@
         }
       ],
       "avatar": "https://w7.pngwing.com/pngs/609/846/png-transparent-discord-logo-discord-computer-icons-logo-computer-software-avatar-miscellaneous-blue-angle.png",
-      "role": "USER"
+      "role": "USER",
+      "recentlyViewIds":[]
+    },
+    {
+      "username": "user1",
+      "email": "user1@gmail.com",
+      "password": "abc12334",
+      "id": 12
     }
   ],
   "prices": [
