@@ -215,10 +215,10 @@ const ProductDescriptionInfo = ({
       )}
 
       <div className="pro-details-social">
-        <ul>
+        <ul>  
           <li>
-            <div class="fb-share-button" data-href={`${process.env.REACT_APP_DEPLOY_URL}/product-tab-left/${product.id}`} data-layout="" data-size="">
-              <a target="_blank" href={`${process.env.REACT_APP_DEPLOY_FB_SHARER + product.id}`} class="fb-xfbml-parse-ignore">Share</a>
+            <div className="fb-share-button" data-href={`${process.env.REACT_APP_DEPLOY_URL}/product-tab-left/${product.id}`} data-layout="" data-size="">
+              <a target="_blank" href={`${process.env.REACT_APP_DEPLOY_FB_SHARER + product.id}`} className="fb-xfbml-parse-ignore">Share</a>
             </div>
           </li>
           <li>
