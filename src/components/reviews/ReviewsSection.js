@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import React, { useState } from "react";
 import { connect } from 'react-redux';
 import { useToasts } from "react-toast-notifications";
+import { updateReview } from "../../serverAPI";
 
 const Rating = ({ rating }) => {
     return (
@@ -15,42 +16,44 @@ const Rating = ({ rating }) => {
     )
 }
 
-const ReviewCard = ({ review }) => {
+const ReviewCard = ({ review, user }) => {
     const { addToast } = useToasts();
 
-    const [open, setOpen] = useState(false);
+    const [show, setShow] = useState(false);
     const [openForm, setOpenForm] = useState(false)
     const [replyForm, setReplyForm] = useState({
-        image: "/assets/img/testimonial/1.jpg",
+        image: user ? user.avatar : '',
         comment: "",
-        name: ""
+        name: user ? user.username : ''
     })
 
     function onChangeText(e) {
         setReplyForm({ ...replyForm, [e.target.name]: e.target.value })
     }
-    function onReply(e) {
+    async function onReply(e) {
         e.preventDefault();
         review.reply.push(replyForm)
-        setReplyForm({...replyForm, comment: ''})
-        addToast('Add successfully', { appearance: 'success', autoDismiss: true });
-        setOpenForm(false);
+        const status = await updateReview(review, review.id)
+        if (status) {
+            setReplyForm({ ...replyForm, comment: '' })
+            addToast('Add successfully', { appearance: 'success', autoDismiss: true });
+            setOpenForm(false);
+        }
     }
 
     return (
         <>
             {
-                openForm && (
+                openForm && user && (
                     <div className="row mb-3 border py-2">
                         <div className="col-md-6">
                             <div className="rating-form-style mb-10">
-                                <input type="text" name="name" onChange={onChangeText} placeholder="Your name" value={replyForm.name} />
+                                <input type="text" name="name" onChange={onChangeText} placeholder="Your name" value={replyForm.name} disabled />
                             </div>
                         </div>
                         <div className="col-md-6 d-flex justify-content-end">
-                            <div className="form-submit">
-                                <button type="button" onClick={onReply}>Reply</button>
-                            </div>
+                            <button type="button" className="btn btn-danger mr-2" style={{ height: '45px' }} onClick={() => setOpenForm(false)}>Cancel</button>
+                            <button type="button" className="btn btn-info" style={{ height: '45px' }} onClick={onReply}>Reply</button>
                         </div>
                         <div className="col-12">
                             <div className="form-submit">
@@ -65,9 +68,20 @@ const ReviewCard = ({ review }) => {
                     </div>
                 )
             }
+            {
+                openForm && !user && (
+                    <div className="d-flex justify-content-center mb-3">
+                        <a href="/login-register">
+                            <button type="button" className="btn btn-dark">
+                                Login to reply
+                            </button>
+                        </a>
+                    </div>
+                )
+            }
             <div className="single-review">
                 <div className="review-img">
-                    <img src={process.env.PUBLIC_URL + review.image} />
+                    <img src={process.env.PUBLIC_URL + review.image} style={{ width: '90px', height: '100px', overflow: 'hidden', objectFit: 'cover' }} />
                 </div>
                 <div className="review-content w-100">
                     <div className="review-top-wrap">
@@ -78,8 +92,8 @@ const ReviewCard = ({ review }) => {
                             <Rating rating={review.rating} />
                         </div>
                         <div className="review-left">
-                            <button onClick={() => setOpen(!open)}>Show {review.reply.length} reply</button>
-                            <button onClick={() => setOpenForm(true)}>Reply</button>
+                            <button onClick={() => setShow(!show)}>Show {review.reply.length} reply</button>
+                            <button onClick={() => setOpenForm(!openForm)}>Reply</button>
                         </div>
                     </div>
                     <div className="review-bottom">
@@ -87,10 +101,10 @@ const ReviewCard = ({ review }) => {
                     </div>
                 </div>
             </div>
-            {open && review.reply.map((rep, index) => (
+            {show && review.reply.map((rep, index) => (
                 <div className="single-review child-review pb-3" key={index}>
                     <div className="review-img">
-                        <img src={process.env.PUBLIC_URL + rep.image} />
+                        <img src={process.env.PUBLIC_URL + rep.image} style={{ width: '90px', height: '100px', overflow: 'hidden', objectFit: 'cover' }} />
                     </div>
                     <div className="review-content">
                         <div className="review-top-wrap">
@@ -110,13 +124,13 @@ const ReviewCard = ({ review }) => {
     )
 }
 
-const ReviewsSection = ({ reviews }) => {
+const ReviewsSection = ({ reviews, user }) => {
 
     return (
         <div className="col-lg-7">
             {reviews && reviews.map((review, index) => (
                 <div className="review-wrapper" key={index}>
-                    <ReviewCard review={review} />
+                    <ReviewCard review={review} user={user} />
                 </div>
             ))}
         </div>
@@ -127,12 +141,14 @@ const ReviewsSection = ({ reviews }) => {
 ReviewsSection.propTypes = {
     reviews: PropTypes.array,
     prodId: PropTypes.any,
+    user: PropTypes.any
 };
 
 const mapStateToProps = (state, ownProps) => {
     const prodId = ownProps.prodId
     return {
         reviews: state.reviewsData.reviews.filter(review => review.productId == prodId),
+        user: state.authData.currentUser
     }
 }
 

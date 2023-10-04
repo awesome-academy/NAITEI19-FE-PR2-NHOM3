@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
 
 import { fetchProducts } from "./redux/actions/productActions";
+import { fetchReviews } from "./redux/actions/reviewsAction";
 
 // home pages
 const HomeBookStore = lazy(() => import("./pages/home/HomeBookStore"));
@@ -27,6 +28,8 @@ const ManageCategory = lazy(() => import("./pages/admin/ManageCategory"));
 const ManageProducts = lazy(() => import("./pages/admin/ManageProducts"));
 const Checkout = lazy(() => import("./pages/other/Checkout"));
 const ManageOrder = lazy(() => import("./pages/admin/ManageOrder"))
+const Wishlist = lazy(() => import("./pages/other/Wishlist"))
+const Dashboard = lazy(() => import("./pages/admin/Dashboard"))
 
 const App = (props) => {
   useEffect(() => {
@@ -41,11 +44,16 @@ const App = (props) => {
     );
 
     const fetchData = async () => {
-      const response = await fetch(
+      const response1 = await fetch(
         process.env.REACT_APP_BACKEND_URL + "/products/"
       );
-      const products = await response.json();
+      const response2 = await fetch(
+        process.env.REACT_APP_BACKEND_URL + "/reviews/"
+      )
+      const products = await response1.json();
+      const reviews = await response2.json();
       props.dispatch(fetchProducts(products));
+      props.dispatch(fetchReviews(reviews));
     };
 
     fetchData();
@@ -104,6 +112,10 @@ const App = (props) => {
               />
               <Route path={process.env.PUBLIC_URL + "/cart"} component={Cart} />
               <Route
+                path={process.env.PUBLIC_URL + "/admin/dashboard"}
+                component={Dashboard}
+              />
+              <Route
                 path={process.env.PUBLIC_URL + "/admin/users"}
                 component={ManageUser}
               />
@@ -123,6 +135,10 @@ const App = (props) => {
                 path={process.env.PUBLIC_URL + "/admin/orders"}
                 component={ManageOrder}
               />
+              <Route
+                path={process.env.PUBLIC_URL + "/wishlist"}
+                component={Wishlist}
+              />
             </Switch>
           </Suspense>
         </Router>
@@ -136,3 +152,4 @@ App.propTypes = {
 };
 
 export default connect()(multilanguage(App));
+

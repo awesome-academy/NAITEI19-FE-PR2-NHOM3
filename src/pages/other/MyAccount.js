@@ -253,7 +253,7 @@ const MyAccount = ({ location, user }) => {
                             <div className="account-info-wrapper">
                               <h4>Address Book Entries</h4>
                             </div>
-                            <Addresses onDelete={onDelete}/>
+                            <Addresses onDelete={onDelete} />
                             <div className="billing-back-btn">
                               <div className="billing-btn">
                                 <button type="button" onClick={onAdd}>Add</button>
@@ -316,7 +316,7 @@ const MyAccount = ({ location, user }) => {
                             <div className="account-info-wrapper">
                               <h4>Danh sách đơn hàng</h4>
                             </div>
-                            <Table>
+                          <Table>
                             <TableHead>
                               <TableRow>
                                 <TableCell>Trạng thái</TableCell>
@@ -344,44 +344,44 @@ const MyAccount = ({ location, user }) => {
                                       />
                                     </TableCell>
                                     <TableCell>
-                                    {order.FirstName}
+                                      {order.FirstName}
                                     </TableCell>
                                     <TableCell>
-                                    {order.LastName}
+                                      {order.LastName}
                                     </TableCell>
                                     <TableCell>
-                                    {order.phone}
+                                      {order.phone}
                                     </TableCell>
-                                    
+
                                     <TableCell>
                                       {order.orderDate}
                                       {/* {format(
                                         new Date(order.orderDate),
                                         "dd/MM/yyyy"
                                       )} */}
-                                    </TableCell>
-                                    <TableCell>
-                                      {order.deliveryDate}
-                                      {/* {" "}
+                                      </TableCell>
+                                      <TableCell>
+                                        {order.deliveryDate}
+                                        {/* {" "}
                                       {console.log("Value of order.shippingDate:", order.deliveryDate)}
                                       {order.deliveryDate ? format(new Date(order.deliveryDate), "dd/MM/yyyy") : 'chua co ngay giao hang'} */}
 
-                                    </TableCell>
-                                    <TableCell>
-                                      {order.totalPrice} VND
-                                    </TableCell>
-                                    <TableCell>
-                                      {/* <Link to={`/order-detail/${order.id}`}> */}
+                                      </TableCell>
+                                      <TableCell>
+                                        {order.totalPrice} VND
+                                      </TableCell>
+                                      <TableCell>
+                                        {/* <Link to={`/order-detail/${order.id}`}> */}
                                         Xem
-                                      {/* </Link> */}
-                                    </TableCell>
-                                  </TableRow>
-                                ))
-                              ) : (
-                                <p>chưa có đơn hàng nào.</p>
-                              )}
-                            </TableBody>
-                          </Table>
+                                        {/* </Link> */}
+                                      </TableCell>
+                                    </TableRow>
+                                  ))
+                                ) : (
+                                  <p>chưa có đơn hàng nào.</p>
+                                )}
+                              </TableBody>
+                            </Table>
                           </div>
                         </Card.Body>
                       </Accordion.Collapse>
