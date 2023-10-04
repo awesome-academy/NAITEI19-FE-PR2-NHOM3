@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { setActiveSort } from "../../helpers/product";
 
 const ShopColor = ({ colors, getFilterParamsBody }) => {
   return (
@@ -9,26 +8,14 @@ const ShopColor = ({ colors, getFilterParamsBody }) => {
       <div className="sidebar-widget-list mt-20">
         {colors ? (
           <ul>
-            <li>
-              <div className="sidebar-widget-list-left">
-                <button
-                  onClick={(e) => {
-                    getFilterParamsBody("color", "");
-                    setActiveSort(e);
-                  }}
-                >
-                  <span className="checkmark" /> All Colors{" "}
-                </button>
-              </div>
-            </li>
             {colors.map((color, key) => {
               return (
                 <li key={key}>
                   <div className="sidebar-widget-list-left">
                     <button
-                      onClick={(e) => {
+                      color-value={color}
+                      onClick={() => {
                         getFilterParamsBody("color", color);
-                        setActiveSort(e);
                       }}
                     >
                       <span className="checkmark" /> {color}{" "}

@@ -106,6 +106,108 @@ const AddForm = ({ categoryList }) => {
   );
 };
 
+const EditForm = ({ categoryList, category }) => {
+  const [formData, setFormData] = React.useState({
+    name: category.name,
+    parentId: category.parentId,
+  });
+
+  const [parentCategories, setParentCategories] = React.useState([]);
+
+  const renderParentCategoryList = (categoryList) => {
+    const parentList = categoryList.filter(
+      (item) => !item.parentId && item.id !== category.id
+    );
+    setParentCategories(parentList);
+  };
+
+  React.useEffect(() => {
+    renderParentCategoryList(categoryList);
+  }, [categoryList]);
+
+  const handleOnchangeInput = (e) => {
+    let tempFormData;
+    if (e.target.id === "categoryName") {
+      tempFormData = { ...formData };
+      tempFormData.name = e.target.value;
+    } else if (e.target.id === "parentId") {
+      tempFormData = { ...formData };
+      tempFormData.parentId = parseInt(e.target.value);
+      if (e.target.value === "") {
+        delete tempFormData.parentId;
+      }
+    }
+    setFormData(tempFormData);
+  };
+
+  const handleSubmit = () => {
+    serverAPI
+      .put(`/categories/${category.id}`, formData)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  };
+
+  return (
+    <form style={{ marginBottom: "20px" }}>
+      <div class="form-group row">
+        <label for="categoryName" class="col-sm-2 col-form-label">
+          Name
+        </label>
+        <div class="col-sm-10">
+          <input
+            type="text"
+            class="form-control"
+            id="categoryName"
+            value={formData.name}
+            style={{ textTransform: "capitalize" }}
+            onChange={handleOnchangeInput}
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="parentId" class="col-sm-2 col-form-label">
+          Parent Category
+        </label>
+        <div class="col-sm-10">
+          <select
+            id="parentId"
+            class="form-control"
+            onChange={handleOnchangeInput}
+            style={{ textTransform: "capitalize" }}
+          >
+            <option value="" selected={!formData.parentId}>
+              N/A
+            </option>
+            {parentCategories.map((category) => {
+              return (
+                <option
+                  selected={formData.parentId === category.id}
+                  value={category.id}
+                  key={category.id}
+                  style={{ textTransform: "capitalize" }}
+                >
+                  {category.name}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        onClick={(e) => handleSubmit(e)}
+      >
+        Submit
+      </button>
+    </form>
+  );
+};
+
 const RemotePagination = ({
   columns,
   data,
@@ -180,27 +282,36 @@ const RemotePagination = ({
   </div>
 );
 
-const CategoryInfoRenderer = ({ categories, category }) => {
+const CategoryInfoRenderer = ({
+  allCategory,
+  categories,
+  category,
+  isEdit,
+}) => {
   return (
     <div className="container-fluid mb-5">
-      <div className="row">
-        <p className="col-12" style={{ textTransform: "capitalize" }}>
-          <strong>Category ID:</strong> {category.id}
-        </p>
-        <p className="col-12" style={{ textTransform: "capitalize" }}>
-          <strong>Category Name:</strong> {category.name}
-        </p>
-        <p className="col-12" style={{ textTransform: "capitalize" }}>
-          <strong>Parent Category ID:</strong>{" "}
-          {category.parentId ? category.parentId : "N/A"}
-        </p>
-        <p className="col-12" style={{ textTransform: "capitalize" }}>
-          <strong>Category's Parent:</strong>{" "}
-          {category.parentId
-            ? categories.find((item) => item.id === category.parentId).name
-            : "N/A"}
-        </p>
-      </div>
+      {!isEdit ? (
+        <div className="row">
+          <p className="col-12" style={{ textTransform: "capitalize" }}>
+            <strong>Category ID:</strong> {category.id}
+          </p>
+          <p className="col-12" style={{ textTransform: "capitalize" }}>
+            <strong>Category Name:</strong> {category.name}
+          </p>
+          <p className="col-12" style={{ textTransform: "capitalize" }}>
+            <strong>Parent Category ID:</strong>{" "}
+            {category.parentId ? category.parentId : "N/A"}
+          </p>
+          <p className="col-12" style={{ textTransform: "capitalize" }}>
+            <strong>Category's Parent:</strong>{" "}
+            {category.parentId
+              ? categories.find((item) => item.id === category.parentId).name
+              : "N/A"}
+          </p>
+        </div>
+      ) : (
+        <EditForm categoryList={allCategory} category={category} />
+      )}
     </div>
   );
 };
@@ -213,6 +324,7 @@ const ManageCategory = () => {
   const [categories, setCategories] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState(null);
+  const [isEdit, setIsEdit] = React.useState(false);
 
   const [allCategory, setAllCategory] = React.useState([]);
 
@@ -222,9 +334,13 @@ const ManageCategory = () => {
 
   React.useEffect(() => {
     setLoading(true);
-    serverAPI.get(`/categories`).then((res) => {
-      setAllCategory(res.data);
-    });
+    const callApi = async () => {
+      await serverAPI.get(`/categories`).then((res) => {
+        console.log(res.data)
+        setAllCategory(res.data);
+      });
+    };
+    callApi();
     serverAPI
       .get(
         `/categories?_page=${currentPage}&_limit=${paginationSize}&name_like=${searchText}`
@@ -265,7 +381,7 @@ const ManageCategory = () => {
         return (
           <p style={{ textTransform: "capitalize" }} id={cell.id}>
             {cell.parentId
-              ? allCategory.find((item) => item.id === cell.parentId).name
+              ? allCategory.find((item) => item.id === cell.parentId)?.name
               : "N/A"}
           </p>
         );
@@ -277,13 +393,13 @@ const ManageCategory = () => {
       formatter: (row, cell) => {
         return (
           <div className="d-flex" style={{ gap: 2 }} id={cell.id}>
-            <Button variant="primary" onClick={() => handleEditUser(cell.id)}>
+            <Button
+              variant="primary"
+              onClick={() => handleEditCategory(cell.id)}
+            >
               <i className="fa fa-edit fs-5"></i>
             </Button>
-            <Button
-              variant="danger"
-              onClick={() => handleDeleteCategory(cell)}
-            >
+            <Button variant="danger" onClick={() => handleDeleteCategory(cell)}>
               <i className="fa fa-trash fs-5"></i>
             </Button>
           </div>
@@ -292,7 +408,9 @@ const ManageCategory = () => {
     },
   ];
 
-  function handleEditUser(id) {}
+  function handleEditCategory() {
+    setIsEdit(() => !isEdit);
+  }
 
   function handleDeleteCategory(category) {
     if (allCategory.find((item) => item.parentId === category.id)) {
@@ -357,7 +475,12 @@ const ManageCategory = () => {
         expandRow={{
           onlyOneExpanding: true,
           renderer: (row) => (
-            <CategoryInfoRenderer categories={categories} category={row} />
+            <CategoryInfoRenderer
+              allCategory={allCategory}
+              categories={categories}
+              category={row}
+              isEdit={isEdit}
+            />
           ),
         }}
         noDataIndication={

@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { setActiveSort } from "../../helpers/product";
 
 const ShopTag = ({ tags, getFilterParamsBody }) => {
   return (
@@ -13,9 +12,9 @@ const ShopTag = ({ tags, getFilterParamsBody }) => {
               return (
                 <li key={key}>
                   <button
-                    onClick={(e) => {
+                    tag-value={tag}
+                    onClick={() => {
                       getFilterParamsBody("tag", tag);
-                      setActiveSort(e);
                     }}
                   >
                     {tag}

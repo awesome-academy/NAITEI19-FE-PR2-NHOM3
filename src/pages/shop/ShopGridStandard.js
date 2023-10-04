@@ -4,7 +4,7 @@ import MetaTags from "react-meta-tags";
 import Paginator from "react-hooks-paginator";
 import { BreadcrumbsItem } from "react-breadcrumbs-dynamic";
 import { connect } from "react-redux";
-import { getSortedProducts } from "../../helpers/product";
+import { getSortedProducts, setActiveSort } from "../../helpers/product";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import ShopSidebar from "../../wrappers/product/ShopSidebar";
@@ -77,6 +77,7 @@ const ShopGridStandard = ({ location, products }) => {
     );
     setSortedProducts(sortedProducts);
     setCurrentData(sortedProducts.slice(offset, offset + pageLimit));
+    setActiveSort(filterParamsValues)
   }, [offset, products, filterParamsTypes, filterParamsValues]);
 
   return (
