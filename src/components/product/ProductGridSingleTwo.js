@@ -79,7 +79,7 @@ const ProductGridSingleTwo = ({
                 </a>
               ) : product.variation && product.variation.length >= 1 ? (
                 <Link
-                  to={`${process.env.PUBLIC_URL}/product/${product.id}`}
+                  to={`${process.env.PUBLIC_URL}/product-tab-left/${product.id}`}
                   title="Select options"
                 >
                   <i className="fa fa-cog"></i>
