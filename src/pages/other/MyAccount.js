@@ -20,7 +20,6 @@ import {
   TableCell,
   Chip,
 } from "@material-ui/core";
-import { format } from "date-fns";
 
 const MyAccount = ({ location, user }) => {
   const dispatch = useDispatch();
@@ -352,7 +351,7 @@ const MyAccount = ({ location, user }) => {
                                     <TableCell>
                                     {order.phone}
                                     </TableCell>
-                                    
+
                                     <TableCell>
                                       {order.orderDate}
                                       {/* {format(
