@@ -27,6 +27,7 @@ const ManageCategory = lazy(() => import("./pages/admin/ManageCategory"));
 const ManageProducts = lazy(() => import("./pages/admin/ManageProducts"));
 const Checkout = lazy(() => import("./pages/other/Checkout"));
 const ManageOrder = lazy(() => import("./pages/admin/ManageOrder"))
+const Dashboard = lazy(() => import("./pages/admin/Dashboard"))
 
 const App = (props) => {
   useEffect(() => {
@@ -103,6 +104,10 @@ const App = (props) => {
                 component={Contact}
               />
               <Route path={process.env.PUBLIC_URL + "/cart"} component={Cart} />
+              <Route
+                path={process.env.PUBLIC_URL + "/admin/dashboard"}
+                component={Dashboard}
+              />
               <Route
                 path={process.env.PUBLIC_URL + "/admin/users"}
                 component={ManageUser}

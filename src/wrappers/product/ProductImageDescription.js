@@ -13,7 +13,8 @@ const ProductImageDescription = ({
   spaceBottomClass,
   galleryType,
   product,
-  currency
+  currency,
+  cartItems
 }) => {
  
   const { addToast } = useToasts();
@@ -56,6 +57,7 @@ const ProductImageDescription = ({
               finalDiscountedPrice={finalDiscountedPrice}
               finalProductPrice={finalProductPrice}
               addToast={addToast}
+              cartItems={cartItems}
             />
           </div>
         </div>
@@ -65,6 +67,7 @@ const ProductImageDescription = ({
 };
 
 ProductImageDescription.propTypes = {
+  cartItems: PropTypes.array,
   currency: PropTypes.object,
   galleryType: PropTypes.string,
   product: PropTypes.object,
@@ -75,6 +78,7 @@ ProductImageDescription.propTypes = {
 const mapStateToProps = state => {
   return {
     currency: state.currencyData,
+    cartItems: state.cartData,
   };
 };
 
