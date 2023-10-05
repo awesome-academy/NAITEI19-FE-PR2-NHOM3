@@ -1,17 +1,21 @@
 import PropTypes from "prop-types";
-import React, { Fragment, useState, useEffect } from "react";
+import React, { Fragment} from "react";
 import { connect } from "react-redux";
 import { addToCart } from "../../redux/actions/cartActions";
+import { addToWishlist } from "../../redux/actions/wishlistActions";
 import ProductGridListSingle from "../../components/product/ProductGridListSingle";
 
 const ProductGrid = ({
   products,
   currency,
   addToCart,
+  addToWishlist,
   cartItems,
+  wishlistItems,
   sliderClassName,
   spaceBottomClass,
 }) => {
+  console.log("🚀 ~ file: ProductgridList.js:18 ~ currency:", currency)
   return (
     <Fragment>
       {products.map((product) => {
@@ -22,8 +26,14 @@ const ProductGrid = ({
             product={product}
             currency={currency}
             addToCart={addToCart}
+            addToWishlist={addToWishlist}
             cartItem={
-              cartItems.filter(cartItem => cartItem.id === product.id)[0]
+              cartItems.filter((cartItem) => cartItem.id === product.id)[0]
+            }
+            wishlistItem={
+              wishlistItems.filter(
+                (wishlistItem) => wishlistItem.id === product.id
+              )[0]
             }
             key={product.id}
           />
@@ -39,13 +49,14 @@ ProductGrid.propTypes = {
   currency: PropTypes.object,
   products: PropTypes.array,
   sliderClassName: PropTypes.string,
-  spaceBottomClass: PropTypes.string
+  spaceBottomClass: PropTypes.string,
 };
 
 const mapStateToProps = (state) => {
   return {
     currency: state.currencyData,
-    cartItems: state.cartData
+    cartItems: state.cartData,
+    wishlistItems: state.wishlistData,
   };
 };
 
@@ -67,7 +78,10 @@ const mapDispatchToProps = (dispatch) => {
           selectedProductSize
         )
       );
-    }
+    },
+    addToWishlist: (item, addToast) => {
+      dispatch(addToWishlist(item, addToast));
+    },
   };
 };
 

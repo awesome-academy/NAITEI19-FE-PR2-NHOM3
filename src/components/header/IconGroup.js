@@ -13,9 +13,9 @@ const IconGroup = ({
   iconWhiteClass,
   removeUser,
   cartData,
-  deleteFromCart
+  deleteFromCart,
 }) => {
-  const handleClick = e => {
+  const handleClick = (e) => {
     e.currentTarget.nextSibling.classList.toggle("active");
   };
 
@@ -30,8 +30,18 @@ const IconGroup = ({
     <div
       className={`header-right-wrap ${iconWhiteClass ? iconWhiteClass : ""}`}
     >
+      {authData.currentUser?.role === "ADMIN" ? (
+        <div style={{ marginTop: "-10px" }}>
+          <a href="/admin/categories" class="btn btn-outline-dark">
+            Go to admin page
+          </a>
+        </div>
+      ) : (
+        <></>
+      )}
+
       <div className="same-style header-search d-none d-lg-block">
-        <button className="search-active" onClick={e => handleClick(e)}>
+        <button className="search-active" onClick={(e) => handleClick(e)}>
           <i className="pe-7s-search" />
         </button>
         <div className="search-content">
@@ -46,26 +56,27 @@ const IconGroup = ({
       <div className="same-style account-setting d-none d-lg-block">
         <button
           className="account-setting-active"
-          onClick={e => handleClick(e)}
+          onClick={(e) => handleClick(e)}
         >
-          {authData.currentUser && authData.currentUser.avatar
-            ? (
-              <img
-                className="rounded-circle"
-                src={authData.currentUser.avatar}
-                alt="avatar"
-                style={{ width: "30px", height: "30px" }}
-              />
-            ) : (
-              <i className="pe-7s-user-female" />
-            )}
+          {authData.currentUser && authData.currentUser.avatar ? (
+            <img
+              className="rounded-circle"
+              src={authData.currentUser.avatar}
+              alt="avatar"
+              style={{ width: "30px", height: "30px" }}
+            />
+          ) : (
+            <i className="pe-7s-user-female" />
+          )}
         </button>
         <div className="account-dropdown">
           <ul>
-            {!(authData.currentUser) && (
+            {!authData.currentUser && (
               <>
                 <li>
-                  <Link to={process.env.PUBLIC_URL + "/login-register"}>Login</Link>
+                  <Link to={process.env.PUBLIC_URL + "/login-register"}>
+                    Login
+                  </Link>
                 </li>
                 <li>
                   <Link to={process.env.PUBLIC_URL + "/login-register"}>
@@ -99,22 +110,20 @@ const IconGroup = ({
       <div className="same-style header-compare">
         <Link to={process.env.PUBLIC_URL + "/compare"}>
           <i className="pe-7s-shuffle" />
-          <span className="count-style">
-          </span>
+          <span className="count-style"></span>
         </Link>
       </div>
       <div className="same-style header-wishlist">
         <Link to={process.env.PUBLIC_URL + "/wishlist"}>
           <i className="pe-7s-like" />
-          <span className="count-style">
-          </span>
+          <span className="count-style"></span>
         </Link>
       </div>
       <div className="same-style cart-wrap d-none d-lg-block">
-        <button className="icon-cart" onClick={e => handleClick(e)}>
+        <button className="icon-cart" onClick={(e) => handleClick(e)}>
           <i className="pe-7s-shopbag" />
           <span className="count-style">
-          {cartData && cartData.length ? cartData.length : 0}
+            {cartData && cartData.length ? cartData.length : 0}
           </span>
         </button>
         {/* menu cart */}
@@ -128,7 +137,7 @@ const IconGroup = ({
         <Link className="icon-cart" to={process.env.PUBLIC_URL + "/cart"}>
           <i className="pe-7s-shopbag" />
           <span className="count-style">
-          {cartData && cartData.length ? cartData.length : 0}
+            {cartData && cartData.length ? cartData.length : 0}
           </span>
         </Link>
       </div>
@@ -149,25 +158,25 @@ IconGroup.propTypes = {
   currency: PropTypes.object,
   iconWhiteClass: PropTypes.string,
   cartData: PropTypes.array,
-  deleteFromCart: PropTypes.func
+  deleteFromCart: PropTypes.func,
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     authData: state.authData,
     currency: state.currencyData,
-    cartData: state.cartData
+    cartData: state.cartData,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     removeUser: () => {
       dispatch(removeUser());
     },
     deleteFromCart: (item, addToast) => {
       dispatch(deleteFromCart(item, addToast));
-    }
+    },
   };
 };
 
