@@ -205,14 +205,47 @@ export const getIndividualSizes = (product) => {
   return individualSizes;
 };
 
-export const setActiveSort = (e) => {
+export const setActiveSort = (filterParams) => {
+  console.log(
+    "🚀 ~ file: product.js:209 ~ setActiveSort ~ filterParams:",
+    filterParams
+  );
   const filterButtons = document.querySelectorAll(
     ".sidebar-widget-list-left button, .sidebar-widget-tag button, .product-filter button"
   );
   filterButtons.forEach((item) => {
-    item.classList.remove("active");
+    if (item.getAttribute("category-id")) {
+      if (
+        parseInt(item.getAttribute("category-id")) === filterParams.category
+      ) {
+        item.classList.add("active");
+      } else {
+        item.classList.remove("active");
+      }
+    } else if (item.getAttribute("color-value")) {
+      if (item.getAttribute("color-value") === filterParams.color) {
+        item.classList.add("active");
+      } else {
+        item.classList.remove("active");
+      }
+    } else if (item.getAttribute("tag-value")) {
+      if (item.getAttribute("tag-value") === filterParams.tag) {
+        item.classList.add("active");
+      } else {
+        item.classList.remove("active");
+      }
+    } else if (item.getAttribute("price-value")) {
+      if (
+        parseInt(item.getAttribute("price-value")) === filterParams.price[0]
+      ) {
+        item.classList.add("active");
+      } else {
+        item.classList.remove("active");
+      }
+    } else {
+      item.classList.remove("active");
+    }
   });
-  e.currentTarget.classList.add("active");
 };
 
 export const setActiveLayout = (e) => {

@@ -58,22 +58,22 @@
   ],
   "categories": [
     {
-      "id": 1,
-      "name": "fashion"
+      "name": "fashion",
+      "id": 1
     },
     {
-      "id": 2,
       "name": "jacket",
-      "parentId": 1
+      "parentId": 1,
+      "id": 2
     },
     {
-      "id": 3,
       "name": "shirt",
-      "parentId": 1
+      "parentId": 1,
+      "id": 3
     },
     {
-      "id": 4,
-      "name": "computer & tablet"
+      "name": "computer & tablet",
+      "id": 4
     },
     {
       "id": 5,

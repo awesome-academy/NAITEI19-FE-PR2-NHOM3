@@ -78,9 +78,6 @@ const ManageUser = () => {
       console.log(cell)
       return (
         <div className="d-flex" style={{ gap: 2 }}>
-          <Button variant="primary" onClick={() => handleEditUser(cell.id)}>
-            <i className="fa fa-edit fs-5"></i>
-          </Button>
           <Button variant="danger" onClick={() => handleDeleteUser(cell.id, cell.username)}>
             <i className="fa fa-trash fs-5"></i>
           </Button>
@@ -88,10 +85,6 @@ const ManageUser = () => {
       )
     }
   }];
-
-  function handleEditUser(id) {
-
-  }
 
   function handleDeleteUser(id, name) {
     if (window.confirm(`Are you sure to delete user ${name}?`) === false) return;

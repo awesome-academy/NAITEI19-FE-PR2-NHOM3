@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import React, { useState } from "react";
-import { setActiveSort } from "../../helpers/product";
 
 const ShopCategories = ({ categories, getFilterParamsBody }) => {
   const [currentOpenCategoryId, setCurrentOpenCategoryId] = useState();
@@ -20,32 +19,19 @@ const ShopCategories = ({ categories, getFilterParamsBody }) => {
       <div className="sidebar-widget-list mt-30">
         {categories ? (
           <ul>
-            <li>
-              <div className="sidebar-widget-list-left">
-                <button
-                  onClick={(e) => {
-                    getFilterParamsBody("category", "");
-                    setActiveSort(e);
-                    setCurrentOpenCategoryId();
-                  }}
-                >
-                  <span className="checkmark" /> All Categories
-                </button>
-              </div>
-            </li>
             {categories.map((category) => {
               return category.parentId ? (
                 category.parentId === currentOpenCategoryId ? (
                   <li key={category.id}>
                     <div className="sidebar-widget-list-left">
                       <button
-                        onClick={(e) => {
+                        category-id={category.id}
+                        onClick={() => {
                           getFilterParamsBody("category", category.id);
-                          setActiveSort(e);
                           handleCurrentOpenCategory(categories, category);
                         }}
                       >
-                        <span className="checkmark" />{" "}
+                        <span className="checkmark" />
                         <p style={{ marginLeft: "20px" }}>{category.name}</p>
                       </button>
                     </div>
@@ -57,9 +43,9 @@ const ShopCategories = ({ categories, getFilterParamsBody }) => {
                 <li key={category.id}>
                   <div className="sidebar-widget-list-left">
                     <button
-                      onClick={(e) => {
+                      category-id={category.id}
+                      onClick={() => {
                         getFilterParamsBody("category", category.id);
-                        setActiveSort(e);
                         handleCurrentOpenCategory(categories, category);
                       }}
                     >

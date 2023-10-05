@@ -184,9 +184,6 @@ const ManageOrder = () => {
       console.log(cell)
       return (
         <div className="d-flex" style={{ gap: 2 }}>
-          <Button variant="primary">
-            <i className="fa fa-edit fs-5"></i>
-          </Button>
           <Button variant="danger">
             <i className="fa fa-trash fs-5"></i>
           </Button>

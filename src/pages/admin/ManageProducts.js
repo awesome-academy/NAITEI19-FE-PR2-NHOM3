@@ -67,7 +67,7 @@ const ManageProducts = ({ productData, fetchCategories }) => {
   const [showModal, setShowModal] = React.useState(false);
 
   React.useEffect(() => {
-    if (productData.categories.length > 0) return;
+    // if (productData.categories.length > 0) return;
     serverAPI.get("/categories")
       .then(res => {
         fetchCategories(res.data);
@@ -143,9 +143,6 @@ const ManageProducts = ({ productData, fetchCategories }) => {
     formatter: (row, cell) => {
       return (
         <div className="d-flex" style={{ gap: 2 }}>
-          <Button variant="primary">
-            <i className="fa fa-edit fs-5"></i>
-          </Button>
           <Button variant="danger">
             <i className="fa fa-trash fs-5"></i>
           </Button>
