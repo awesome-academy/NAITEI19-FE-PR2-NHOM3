@@ -298,7 +298,7 @@ const CreateProductForm = ({ productData, fetchCategories, setShowModal }) => {
                     value={inputState.price}
                     onChange={(e) => dispatchInputState({ type: 'SET_PRICE', payload: e.target.valueAsNumber })}
                   />
-                  <span className="error">{"regularPrice"}</span>
+                  
                 </div>
               </div>
               <div className="col-lg-6 col-md-6">

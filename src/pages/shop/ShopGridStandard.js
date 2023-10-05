@@ -85,7 +85,7 @@ const ShopGridStandard = ({ location, products }) => {
         <title>Flone | Shop Page</title>
         <meta
           name="description"
-          content="Shop page of flone react minimalist eCommerce template."
+          content="Shop Grid View"
         />
       </MetaTags>
 

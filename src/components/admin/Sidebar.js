@@ -10,7 +10,7 @@ export default function Sidebar({}) {
       </div>
       <hr className="text-dark"/>
       <div className="list-group list-group-flush">
-        <a href="/admin" className="list-group-item list-group-item-action py-2 sidebar-item">
+        <a href="/admin/dashboard" className="list-group-item list-group-item-action py-2 sidebar-item">
           <span className="d-inline-block mr-2"><i className="fa fa-home fs-5"></i></span>
           <span className="fs-5">Dashboard</span>
         </a>
