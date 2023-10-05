@@ -13,11 +13,11 @@ const UserInfoRenderer = ({ user }) => (
       </div>
       <div className="col-9">
         <div className="row">
-          <p className="col-6"><strong>Username:</strong> {user.username}</p>
-          <p className="col-6"><strong>Email:</strong> {user.email}</p>
-          <p className="col-6"><strong>First name:</strong> {user.firstname}</p>
-          <p className="col-6"><strong>Phone:</strong> {user.phone}</p>
-          <p className="col-6"><strong>Last name:</strong> {user.lastname}</p>
+          <p className="col-6"><strong>Username:&nbsp;</strong> {user.username}</p>
+          <p className="col-6"><strong>Email:&nbsp;</strong> {user.email}</p>
+          <p className="col-6"><strong>First name:&nbsp;</strong> {user.firstname}</p>
+          <p className="col-6"><strong>Phone:&nbsp;</strong> {user.phone}</p>
+          <p className="col-6"><strong>Last name:&nbsp;</strong> {user.lastname}</p>
           <div className="col-12">
             <strong>Address:</strong>
             {user.addresses ? (
