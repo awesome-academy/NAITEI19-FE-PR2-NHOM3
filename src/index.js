@@ -16,17 +16,12 @@ import * as serviceWorker from "./serviceWorker";
 
 import { composeWithDevTools } from "redux-devtools-extension";
 
-import reviews from './data/reviews.json';
 
 const store = createStore(
   rootReducer,
   load(),
   composeWithDevTools(applyMiddleware(thunk, save()))
 );
-
-// fetch products from json file
-// store.dispatch(fetchUser(user));
-store.dispatch(fetchReviews(reviews));
 
 ReactDOM.render(
   <Provider store={store}>
@@ -36,3 +31,4 @@ ReactDOM.render(
 );
 
 serviceWorker.unregister();
+

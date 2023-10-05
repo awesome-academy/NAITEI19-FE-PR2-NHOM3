@@ -16,4 +16,49 @@ export const createOrder = async (orderData) => {
   }
 }
 
+export const createReview = async (review) => {
+  try {
+    const response = await serverAPI.post('/reviews', review)
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export const updateReview = async (newReview, id) => {
+  try {
+    const response = await serverAPI.put(`/reviews/${id}`, newReview)
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export const updateUser = async (user, id) => {
+  try {
+    const response = await serverAPI.put(`/users/${id}`, user)
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
+export const updateUserRecentView = async (user, prodId) => {
+  console.log(user.recentlyViewIds)
+  console.log(prodId)
+  if(!user.recentlyViewIds.includes(prodId)) {
+    user.recentlyViewIds.unshift(prodId)
+    if(user.recentlyViewIds.length > 4) user.recentlyViewIds.pop()
+    console.log(user)
+    try {
+      const response = await serverAPI.put(`/users/${user.id}`, user)
+      return true;
+    } catch (error) {
+      throw error;
+    }
+  }
+  return false;
+}
+
+
 export default serverAPI;
+

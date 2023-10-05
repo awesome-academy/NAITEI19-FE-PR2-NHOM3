@@ -10,16 +10,18 @@ import ProductDescriptionTab from "../../wrappers/product/ProductDescriptionTab"
 import ProductImageDescription from "../../wrappers/product/ProductImageDescription";
 import { useDispatch } from "react-redux";
 import { updateRecentlyView } from "../../redux/actions/authAction";
+import { updateUserRecentView } from "../../serverAPI";
 
-const ProductTabLeft = ({ location, product }) => {
+const ProductTabLeft = ({ location, product, user }) => {
   const { pathname } = location;
   const dispatch = useDispatch();
 
-  function setRecentView() {
+  async function setRecentView() {
+    await updateUserRecentView(user, product.id)
     dispatch(updateRecentlyView(product.id))
   }
 
-  useEffect(()=>setRecentView(),[])
+  useEffect(setRecentView,[])
 
   return (
     <Fragment>
@@ -81,7 +83,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     product: state.productData.products.filter(
       single => single.id === itemId
-    )[0]
+    )[0],
+    user: state.authData.currentUser
   };
 };
 

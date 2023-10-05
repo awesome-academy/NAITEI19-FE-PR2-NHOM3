@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import { BreadcrumbsProvider } from "react-breadcrumbs-dynamic";
 
 import { fetchProducts } from "./redux/actions/productActions";
+import { fetchReviews } from "./redux/actions/reviewsAction";
 
 // home pages
 const HomeBookStore = lazy(() => import("./pages/home/HomeBookStore"));
@@ -43,11 +44,16 @@ const App = (props) => {
     );
 
     const fetchData = async () => {
-      const response = await fetch(
+      const response1 = await fetch(
         process.env.REACT_APP_BACKEND_URL + "/products/"
       );
-      const products = await response.json();
+      const response2 = await fetch(
+        process.env.REACT_APP_BACKEND_URL + "/reviews/"
+      )
+      const products = await response1.json();
+      const reviews = await response2.json();
       props.dispatch(fetchProducts(products));
+      props.dispatch(fetchReviews(reviews));
     };
 
     fetchData();
@@ -146,3 +152,4 @@ App.propTypes = {
 };
 
 export default connect()(multilanguage(App));
+
